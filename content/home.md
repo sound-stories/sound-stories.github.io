@@ -1,1 +1,7 @@
 # Home
+We create bespoke music and sound to support all forms of storytelling.  
+We collaborate on [commissions](commissions.html), make  
+[podcasts](podcasts.html), write [songs](songs.html) and provide  
+[studio](studio.html) facilities. When the chance  
+arises, we carry out musical [experiments](experiments.html).  
+[contact us](contact.html) to find out more.
