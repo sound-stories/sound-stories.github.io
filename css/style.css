@@ -1,5 +1,20 @@
+
+/* Load font in modern, efficient formats first */
+@font-face {
+  font-family: 'MERKPIX-Bold';
+  src: url('fonts/MERKPIX-Bold.eot'); /* IE8 */
+  src: url('fonts/MERKPIX-Bold.eot?#iefix') format('embedded-opentype'), /* IE9+ */
+       url('fonts/MERKPIX-Bold.woff2') format('woff2'), /* Modern */
+       url('fonts/MERKPIX-Bold.woff') format('woff'),   /* Older modern */
+       url('fonts/MERKPIX-Bold.ttf') format('truetype');/* Legacy fallback */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 body {
-    font-family: 'Verdana';
+    font-family: 'MERKPIX-Bold';/*, 'Courier New', Courier, monospace;*/
     color: #ffffff; 
     background: linear-gradient(to bottom, #0a0a23, #3d005c);
     margin: 0;
