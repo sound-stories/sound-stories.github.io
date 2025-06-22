@@ -14,7 +14,7 @@
 
 
 body {
-    font-family: 'MERKPIX-Bold';/*, 'Courier New', Courier, monospace;*/
+    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
     color: #ffffff; 
     background: linear-gradient(to bottom, #0a0a23, #3d005c);
     margin: 0;
