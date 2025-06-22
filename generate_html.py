@@ -19,7 +19,7 @@ with open(TEMPLATE_FILE, "r") as template_file:
     template = template_file.read()
 
 # Copy static assets (img, css, js) to output directory
-for folder in ["img", "css", "js"]:
+for folder in ["img", "css", "js", "fonts"]:
     source = Path(ASSETS_DIR) / folder
     destination = Path(OUTPUT_DIR) / folder
     if source.exists():
