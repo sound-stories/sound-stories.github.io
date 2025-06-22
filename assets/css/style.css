@@ -23,13 +23,13 @@ body {
 }
 
 a {
-    color: #f9dc5c; 
+    color: rgb(179, 179, 179); 
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #ff6f61; 
+    color: rgb(255, 209, 68); 
 }
 
 
