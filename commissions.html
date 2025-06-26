@@ -1,75 +1,89 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Commissions</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Commissions</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container-fluid justify-content-between">
-      <a class="navbar-brand" href="index.html">
-        <!--<img src="img/logo.png" width="200" height="55" id="logo" alt="Logo" />-->
+<!-- Navigation Bar -->
+<nav class="navbar">
+<div class="container-fluid justify-content-between">
+<a class="navbar-logo" href="index.html">
         SOUND | STORIES
       </a>
-      <button class="button" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainMenu" aria-controls="mainMenu">
+<a aria-controls="mainMenu" class="navbar-show-menu" data-bs-target="#mainMenu" data-bs-toggle="offcanvas" type="button">
         Menu
-      </button>
-    </div>
-  </nav>
+      
+</a></div>
+</nav>
+<!-- Offcanvas Menu -->
+<div aria-labelledby="mainMenuLabel" class="offcanvas offcanvas-end" id="mainMenu" tabindex="-1">
+<div class="offcanvas-body">
+<!-- Close Button -->
+<button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button">X</button><br/>
+<div class="nav-item">
+<a class="nav-link" href="commissions.html">Commissions</a><br/>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line1.svg"/><br/>
+</div>
+<div class="nav-item">
+<a class="nav-link" href="podcasts.html">Podcasts</a><br/>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line2.svg"/><br/>
+</div>
+<div class="nav-item">
+<a class="nav-link" href="songs.html">Songs</a><br/>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line3.svg"/><br/>
+</div>
+<div class="nav-item">
+<a class="nav-link" href="experiments.html">Experiments</a><br/>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line4.svg"/><br/>
+</div>
+<div class="nav-item">
+<a class="nav-link" href="studio.html">Studio</a><br/>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line5.svg"/><br/>
+</div>
+<div class="nav-item">
+<a class="nav-link" href="contact.html">Contact</a><br/>
+</div>
+</div>
+</div>
+<!-- Page Content -->
 
-  <!-- Offcanvas Menu -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="mainMenu" aria-labelledby="mainMenuLabel">
+<div class="container mt-0" id="content_top"><p><img alt="commissions Title" class="img-fluid" src="img/titles/commissions.png"/></p>
+<p>Compositions lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
+wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+nisl ut aliquip ex ea commodo consequat</p></div>
+<div class="container mt-4" id="content_middle"><p><img alt="Drum Machine" class="img-fluid" src="animations/commissions.gif"/></p></div>
+<div class="container mt-4" id="content_bottom"><h1>↘ Project Samples</h1>
+<p><a href="#" onclick="document.getElementById('vimeoModal1').style.display='block'; return false;">Book of Man</a></p>
+<img alt="hand-drawn divider" class="img-fluid hand-drawn-line img-fluid" src="img/line1.svg"/>
+<p><a href="#" onclick="document.getElementById('vimeoModal2').style.display='block'; return false;">Anatomy</a></p>
+<img alt="hand-drawn divider" class="img-fluid hand-drawn-line img-fluid" src="img/line2.svg"/>
+<p><a href="#" onclick="document.getElementById('vimeoModal3').style.display='block'; return false;">Book of Man</a></p>
+<div class="modal" id="vimeoModal1" style="display:none; position:fixed; top:10%; left:10%; width:80%; height:80%; background:white; z-index:1000; padding:1rem;">
+<iframe allowfullscreen="" frameborder="0" height="100%" src="https://player.vimeo.com/video/436202793" width="100%"></iframe>
+<button onclick="document.getElementById('vimeoModal1').style.display='none';" style="position:absolute; top:10px; right:10px;">Close</button>
+</div>
 
-    <div class="offcanvas-body">
+<div class="modal" id="vimeoModal2" style="display:none; position:fixed; top:10%; left:10%; width:80%; height:80%; background:white; z-index:1000; padding:1rem;">
+<iframe allowfullscreen="" frameborder="0" height="100%" src="https://player.vimeo.com/video/436202793" width="100%"></iframe>
+<button onclick="document.getElementById('vimeoModal2').style.display='none';" style="position:absolute; top:10px; right:10px;">Close</button>
+</div>
 
-      <!-- Close Button -->
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-        &times;
-      </button><br>
-
-      <a class="nav-link text-white" href="commissions.html">Commissions</a><br>
-      <img src="img/line1.svg" alt="" class="hand-drawn-line"><br>
-
-      <a class="nav-link text-white" href="podcasts.html">Podcasts</a><br>
-      <img src="img/line2.svg" alt="" class="hand-drawn-line"><br>
-
-      <a class="nav-link text-white" href="songs.html">Songs</a><br>
-      <img src="img/line3.svg" alt="" class="hand-drawn-line"><br>
-
-      <a class="nav-link text-white" href="experiments.html">Experiments</a><br>
-      <img src="img/line4.svg" alt="" class="hand-drawn-line"><br>
-
-      <a class="nav-link text-white" href="studio.html">Studio</a><br>
-      <img src="img/line5.svg" alt="" class="hand-drawn-line"><br>
-
-      <a class="nav-link text-white" href="contact.html">Contact</a><br>
-    </div>
-  </div>
-
-  <!-- Page Content -->
-  <div class="container mt-4">
-    <h1>Commissions</h1>
-<p><img alt="Drum Machine" class="img-fluid" src="img/drum_machine.png"/></p>
-<ul>
-<li><a href="https://vimeo.com/436202793">Vimeo Video: 436202793</a></li>
-<li><a href="https://vimeo.com/436202793">Vimeo Video: 436202793</a></li>
-<li><a href="https://vimeo.com/436202793">Vimeo Video: 436202793</a></li>
-</ul>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2025 Sound Stories</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
+<div class="modal" id="vimeoModal3" style="display:none; position:fixed; top:10%; left:10%; width:80%; height:80%; background:white; z-index:1000; padding:1rem;">
+<iframe allowfullscreen="" frameborder="0" height="100%" src="https://player.vimeo.com/video/436202793" width="100%"></iframe>
+<button onclick="document.getElementById('vimeoModal3').style.display='none';" style="position:absolute; top:10px; right:10px;">Close</button>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+<p>© 2025 Sound Stories</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 
   const navbar = document.querySelector('.navbar');
@@ -87,6 +101,5 @@
   });
 
 </script>
-
 </body>
 </html>

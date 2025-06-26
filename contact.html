@@ -1,75 +1,71 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container-fluid justify-content-between">
-      <a class="navbar-brand" href="index.html">
-        <!--<img src="img/logo.png" width="200" height="55" id="logo" alt="Logo" />-->
+<!-- Navigation Bar -->
+<nav class="navbar">
+<div class="container-fluid justify-content-between">
+<a class="navbar-logo" href="index.html">
         SOUND | STORIES
       </a>
-      <button class="button" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainMenu" aria-controls="mainMenu">
+<a aria-controls="mainMenu" class="navbar-show-menu" data-bs-target="#mainMenu" data-bs-toggle="offcanvas" type="button">
         Menu
-      </button>
-    </div>
-  </nav>
+      
+</a></div>
+</nav>
+<!-- Offcanvas Menu -->
+<div aria-labelledby="mainMenuLabel" class="offcanvas offcanvas-end" id="mainMenu" tabindex="-1">
+<div class="offcanvas-body">
+<!-- Close Button -->
+<button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button">X</button><br/>
+<div class="nav-item">
+<a class="nav-link" href="commissions.html">Commissions</a><br/>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line1.svg"/><br/>
+</div>
+<div class="nav-item">
+<a class="nav-link" href="podcasts.html">Podcasts</a><br/>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line2.svg"/><br/>
+</div>
+<div class="nav-item">
+<a class="nav-link" href="songs.html">Songs</a><br/>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line3.svg"/><br/>
+</div>
+<div class="nav-item">
+<a class="nav-link" href="experiments.html">Experiments</a><br/>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line4.svg"/><br/>
+</div>
+<div class="nav-item">
+<a class="nav-link" href="studio.html">Studio</a><br/>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line5.svg"/><br/>
+</div>
+<div class="nav-item">
+<a class="nav-link" href="contact.html">Contact</a><br/>
+</div>
+</div>
+</div>
+<!-- Page Content -->
 
-  <!-- Offcanvas Menu -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="mainMenu" aria-labelledby="mainMenuLabel">
-
-    <div class="offcanvas-body">
-
-      <!-- Close Button -->
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-        &times;
-      </button><br>
-
-      <a class="nav-link text-white" href="commissions.html">Commissions</a><br>
-      <img src="img/line1.svg" alt="" class="hand-drawn-line"><br>
-
-      <a class="nav-link text-white" href="podcasts.html">Podcasts</a><br>
-      <img src="img/line2.svg" alt="" class="hand-drawn-line"><br>
-
-      <a class="nav-link text-white" href="songs.html">Songs</a><br>
-      <img src="img/line3.svg" alt="" class="hand-drawn-line"><br>
-
-      <a class="nav-link text-white" href="experiments.html">Experiments</a><br>
-      <img src="img/line4.svg" alt="" class="hand-drawn-line"><br>
-
-      <a class="nav-link text-white" href="studio.html">Studio</a><br>
-      <img src="img/line5.svg" alt="" class="hand-drawn-line"><br>
-
-      <a class="nav-link text-white" href="contact.html">Contact</a><br>
-    </div>
-  </div>
-
-  <!-- Page Content -->
-  <div class="container mt-4">
-    <h1>Contact</h1>
+<div class="container mt-0" id="content_top"><h1>Contact</h1>
 <p>Get in touch to find out more.
 We’re happy to chat through
 your project, or how we can
 help bring your ideas to life.
 Drop us an email at:
-hello@soundstories.xxx</p>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2025 Sound Stories</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+hello@soundstories.xxx</p></div>
 
 
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+<p>© 2025 Sound Stories</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 
   const navbar = document.querySelector('.navbar');
@@ -87,6 +83,5 @@ hello@soundstories.xxx</p>
   });
 
 </script>
-
 </body>
 </html>
