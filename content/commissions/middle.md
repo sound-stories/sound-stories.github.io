@@ -1,2 +1,2 @@
-![Drum Machine](animations/commissions.gif)
+![Drum Machine](img/animations/commissions.gif)
 
