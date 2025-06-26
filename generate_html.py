@@ -44,6 +44,23 @@ def get_content(md_file):
     # Parse the HTML content
     soup = BeautifulSoup(html_content, "html.parser")
 
+    # Replace <hr> with alternating hand-drawn lines
+    hand_drawn_lines = [
+        "img/line1.svg",
+        "img/line2.svg",
+        "img/line3.svg",
+    ]
+
+    for idx, hr_tag in enumerate(soup.find_all("hr")):
+        img_tag = soup.new_tag(
+            "img",
+            src=hand_drawn_lines[idx % len(hand_drawn_lines)],
+            alt="hand-drawn divider",
+        )
+        # Keep your responsive bootstrap style
+        img_tag["class"] = ["img-fluid", "hand-drawn-line"]
+        hr_tag.replace_with(img_tag)
+
     # Add 'img-fluid' class to all <img> tags
     for img in soup.find_all("img"):
         existing_classes = img.get("class", [])
@@ -65,7 +82,7 @@ TEMPLATE_FILE = "template.html"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Load the HTML template
-with open(TEMPLATE_FILE, "r") as template_file:
+with open(TEMPLATE_FILE, "r", encoding="utf-8") as template_file:
     template = template_file.read()
 
 # Copy static assets (img, css, js) to output directory
@@ -104,7 +121,7 @@ for subfolder in content_path.iterdir():
 
         template_soup.title.string = title
 
-        for element_type in ["top", "middle", "bottom"]:
+        for element_type in ["large", "top", "middle", "bottom"]:
 
             element_id = f"content_{element_type}"
             md_file = subfolder / f"{element_type}.md"
@@ -124,7 +141,7 @@ for subfolder in content_path.iterdir():
                     content_div.append(content)
 
         # Save the resulting HTML file
-        with open(output_file, "w") as file:
+        with open(output_file, "w", encoding="utf-8") as file:
             file.write(str(template_soup))
 
         print(f"Generated: {output_file}")
