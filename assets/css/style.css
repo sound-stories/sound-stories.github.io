@@ -187,6 +187,10 @@ nav {
     width: 60%;
 }
 
+.content_middle_songs img {
+    width: 60%;
+}
+
 #content_bottom {
     padding: 0rem 0rem 1rem 0rem;
 }
@@ -199,6 +203,9 @@ nav {
     background-color: rgb(54, 108, 174); 
 }
 
+.content_bottom_songs {
+    background-color: rgb(163, 98, 67); 
+}
 
 #content_bottom a {
     color: #000000;
