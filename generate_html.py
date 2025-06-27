@@ -19,9 +19,9 @@ def add_vimeo_links(soup):
             modal_id += 1
             video_id = href.split("/")[-1]
             iframe = f"""
-            <div class="modal" id="vimeoModal{modal_id}" style="display:none; position:fixed; top:10%; left:10%; width:80%; height:80%; background:white; z-index:1000; padding:1rem;">
+            <div class="modal, pop-up" id="vimeoModal{modal_id}">
                 <iframe src="https://player.vimeo.com/video/{video_id}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-                <button onclick="document.getElementById('vimeoModal{modal_id}').style.display='none';" style="position:absolute; top:10px; right:10px;">Close</button>
+                <a onclick="document.getElementById('vimeoModal{modal_id}').style.display='none';">X</button>
             </div>
             """
             # Replace the link with a clickable trigger
@@ -105,11 +105,13 @@ content_path = Path(CONTENT_DIR)
 for subfolder in content_path.iterdir():
     if subfolder.is_dir():
 
+        name = subfolder.stem.lower()
+
         # Determine the output HTML file name
-        if subfolder.stem == "home":
+        if name == "home":
             output_file = Path(OUTPUT_DIR) / "index.html"  # Special case for home page
         else:
-            output_file = Path(OUTPUT_DIR) / f"{subfolder.stem}.html"
+            output_file = Path(OUTPUT_DIR) / f"{name}.html"
 
         template_soup = BeautifulSoup(
             template,
@@ -117,7 +119,7 @@ for subfolder in content_path.iterdir():
         )
 
         # Generate a title from the file name
-        title = subfolder.stem.replace("-", " ").capitalize()
+        title = name.replace("-", " ").capitalize()
 
         template_soup.title.string = title
 
@@ -139,6 +141,13 @@ for subfolder in content_path.iterdir():
                     content = get_content(md_file)
                     content_div.clear()
                     content_div.append(content)
+
+                    content_div_class = f"content_{element_type}_{name}"
+
+                    if "class" in content_div.attrs:
+                        content_div["class"].append(content_div_class)
+                    else:
+                        content_div["class"] = [content_div_class]
 
         # Save the resulting HTML file
         with open(output_file, "w", encoding="utf-8") as file:
