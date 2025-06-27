@@ -175,14 +175,30 @@ nav {
 }
 
 #content_middle {
-    text-align: center;
+    text-align: right;
+    padding: 0rem 0rem 0rem 0rem;
 }
 
+.content_middle_commissions img {
+    width: 80%;
+}
+
+.content_middle_podcasts img {
+    width: 60%;
+}
 
 #content_bottom {
-    background-color: rgb(255, 209, 68); 
     padding: 0rem 0rem 1rem 0rem;
 }
+
+.content_bottom_commissions {
+    background-color: rgb(255, 209, 68); 
+}
+
+.content_bottom_podcasts {
+    background-color: rgb(54, 108, 174); 
+}
+
 
 #content_bottom a {
     color: #000000;
@@ -203,3 +219,30 @@ nav {
     color: #ffffff; 
 }
 
+
+
+.pop-up {
+    display:none; 
+    position:fixed;
+    top:10%; 
+    left:10%; 
+    width:80%;
+    height:85%; 
+    background:white; 
+    z-index:1000; 
+    padding:1rem;
+}
+
+.pop-up a{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #000000; 
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.pop-up a:hover {
+    color: rgb(255, 209, 68); 
+    cursor: hand;
+}
