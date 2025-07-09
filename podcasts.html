@@ -16,9 +16,9 @@
         SOUND | STORIES
       </a>
 <a aria-controls="mainMenu" class="navbar-show-menu" data-bs-target="#mainMenu" data-bs-toggle="offcanvas" type="button">
-        Menu
-      
-</a></div>
+<span class="navbar-toggler-icon"></span>
+</a>
+</div>
 </nav>
 <!-- Offcanvas Menu -->
 <div aria-labelledby="mainMenuLabel" class="offcanvas offcanvas-end" id="mainMenu" tabindex="-1">
@@ -52,17 +52,22 @@
 </div>
 <!-- Page Content -->
 
-<div class="container mt-0 content_top_podcasts" id="content_top"><p><img alt="Podcasts Title" class="img-fluid" src="img/titles/podcasts.png"/></p>
-<p>Compositions lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+<div class="container-fluid d-flex justify-content-end align-items-center bg-black text-white py-3 containter_top_podcasts" id="container_top">
+<div class="text-end me-4 content_top_podcasts" id="content_top"><p>Compositions lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
 nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
 wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
 nisl ut aliquip ex ea commodo consequat</p></div>
-<div class="container mt-4 content_middle_podcasts" id="content_middle"><p><img alt="rig" class="img-fluid" src="img/animations/podcasts.gif"/></p></div>
-<div class="container mt-4 content_bottom_podcasts" id="content_bottom"><h1>↘ Project Samples</h1>
-<p><a href="#" onclick="document.getElementById('vimeoModal1').style.display='block'; return false;">Book of Man</a></p>
-<img alt="hand-drawn divider" class="img-fluid hand-drawn-line img-fluid" src="img/line1.svg"/>
+<img alt="podcasts title" class="img-fluid" src="img/titles/podcasts.png"/>
+</div>
+<div class="container mt-4 containter_middle_podcasts" id="container_middle">
+<div class="content_middle_podcasts" id="content_middle"><p><img alt="rig" src="img/animations/podcasts.gif"/></p></div>
+</div>
+<div class="container-fluid m-0 p-0 containter_bottom_podcasts" id="container_bottom">
+<h1 class="ps-3">↘ Project Samples</h1>
+<div class="m-0 py-1 content_bottom_podcasts" id="content_bottom"><p><a href="#" onclick="document.getElementById('vimeoModal1').style.display='block'; return false;">Book of Man</a></p>
+<img alt="hand-drawn divider" class="img-fluid hand-drawn-line" src="img/line1.svg"/>
 <p><a href="#" onclick="document.getElementById('vimeoModal2').style.display='block'; return false;">Anatomy</a></p>
-<img alt="hand-drawn divider" class="img-fluid hand-drawn-line img-fluid" src="img/line2.svg"/>
+<img alt="hand-drawn divider" class="img-fluid hand-drawn-line" src="img/line2.svg"/>
 <p><a href="#" onclick="document.getElementById('vimeoModal3').style.display='block'; return false;">Book of Man</a></p>
 <div class="modal, pop-up" id="vimeoModal1">
 <iframe allowfullscreen="" frameborder="0" height="100%" src="https://player.vimeo.com/video/436202793" width="100%"></iframe>
@@ -79,8 +84,9 @@ nisl ut aliquip ex ea commodo consequat</p></div>
 <a onclick="document.getElementById('vimeoModal3').style.display='none';">X
 </a></div>
 </div>
+</div>
 <!-- Footer -->
-<footer class="bg-dark text-white text-center py-3">
+<footer class="bg-dark text-white text-center m-0 p-0">
 <p>© 2025 Sound Stories</p>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

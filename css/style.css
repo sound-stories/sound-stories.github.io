@@ -49,16 +49,6 @@ h2 {
     color: #f9dc5c;
 }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 1.5rem;
-    background: rgba(246, 245, 252, 0.0);
-    /*
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-    */
-}
 
 footer {
     background: #02020f;
@@ -71,6 +61,10 @@ footer {
 
 nav {
     margin-bottom: 0;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .navbar {
@@ -115,6 +109,10 @@ nav {
 
 .button.menu-open {
   color: transparent; /* Hide "Menu" text */
+}
+
+.offcanvas.offcanvas-end.fullscreen {
+width: 100vw;
 }
 
 .offcanvas-body{
@@ -170,7 +168,6 @@ nav {
 
 #content_top img {
     float: right;
-    margin: 2rem 1rem 2rem 1rem;
     clear: both;
 }
 
@@ -191,10 +188,6 @@ nav {
     width: 60%;
 }
 
-#content_bottom {
-    padding: 0rem 0rem 1rem 0rem;
-}
-
 .content_bottom_commissions {
     background-color: rgb(255, 209, 68); 
 }
@@ -207,13 +200,13 @@ nav {
     background-color: rgb(163, 98, 67); 
 }
 
-#content_bottom a {
+#container_bottom a {
     color: #000000;
     font-size: 2.0rem;
     padding-left: 1rem;
 }
 
-#content_bottom h1 {
+#container_bottom h1 {
     color: #000000;
     font-size: 1.0rem;
     background-color: rgb(255, 255, 255); 
@@ -222,7 +215,7 @@ nav {
     padding-bottom: 0.5rem;
 }
 
-#content_bottom a:hover {
+#container_bottom a:hover {
     color: #ffffff; 
 }
 
