@@ -1,5 +1,3 @@
-# &#8600; Project Samples
-
 [Book of Man](https://vimeo.com/436202793)
 
 ---

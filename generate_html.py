@@ -33,7 +33,7 @@ def add_vimeo_links(soup):
             soup.append(BeautifulSoup(iframe, "html.parser"))
 
 
-def get_content(md_file):
+def get_content(md_file, name):
 
     # Convert Markdown to HTML
     with open(md_file, "r") as file:
@@ -61,11 +61,11 @@ def get_content(md_file):
         img_tag["class"] = ["img-fluid", "hand-drawn-line"]
         hr_tag.replace_with(img_tag)
 
-    # Add 'img-fluid' class to all <img> tags
-    for img in soup.find_all("img"):
-        existing_classes = img.get("class", [])
-        existing_classes.append("img-fluid")
-        img["class"] = existing_classes
+    # # Add 'img-fluid' class to all <img> tags
+    # for img in soup.find_all("img"):
+    #     existing_classes = img.get("class", [])
+    #     existing_classes.append("img-fluid")
+    #     img["class"] = existing_classes
 
     add_vimeo_links(soup)
 
@@ -81,9 +81,6 @@ TEMPLATE_FILE = "template.html"
 # Ensure output directory exists
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Load the HTML template
-with open(TEMPLATE_FILE, "r", encoding="utf-8") as template_file:
-    template = template_file.read()
 
 # Copy static assets (img, css, js) to output directory
 for folder in ["img", "css", "js", "fonts"]:
@@ -107,11 +104,9 @@ for subfolder in content_path.iterdir():
 
         name = subfolder.stem.lower()
 
-        # Determine the output HTML file name
-        if name == "home":
-            output_file = Path(OUTPUT_DIR) / "index.html"  # Special case for home page
-        else:
-            output_file = Path(OUTPUT_DIR) / f"{name}.html"
+        # Load the HTML template
+        with open(TEMPLATE_FILE, "r", encoding="utf-8") as template_file:
+            template = template_file.read()
 
         template_soup = BeautifulSoup(
             template,
@@ -123,24 +118,53 @@ for subfolder in content_path.iterdir():
 
         template_soup.title.string = title
 
+        for img in template_soup.find_all("img"):
+            if "src" in img.attrs and "{page}" in img["src"]:
+                img["src"] = img["src"].replace("{page}", name)
+                print(f"Updated image src: {img['src']}")
+            if "alt" in img.attrs and "{page}" in img["alt"]:
+                img["alt"] = img["alt"].replace("{page}", name)
+
+        # Determine the output HTML file name
+        if name == "home":
+            output_file = Path(OUTPUT_DIR) / "index.html"  # Special case for home page
+        else:
+            output_file = Path(OUTPUT_DIR) / f"{name}.html"
+
         for element_type in ["large", "top", "middle", "bottom"]:
 
-            element_id = f"content_{element_type}"
-            md_file = subfolder / f"{element_type}.md"
+            container_id = f"container_{element_type}"
+            container_div = template_soup.find(id=container_id)
 
-            content_div = template_soup.find(id=element_id)
+            if container_div:
 
-            if content_div:
+                md_file = subfolder / f"{element_type}.md"
 
                 if not md_file.exists():
                     # delete content_div
-                    template_soup.find(id=element_id).decompose()
+                    template_soup.find(id=container_id).decompose()
                 else:
+
+                    content_id = f"content_{element_type}"
+
+                    content_div = template_soup.find(id=content_id)
+
                     print(f"Processing {md_file}")
 
-                    content = get_content(md_file)
+                    content = get_content(
+                        md_file=md_file,
+                        name=name,
+                    )
+
                     content_div.clear()
                     content_div.append(content)
+
+                    container_div_class = f"containter_{element_type}_{name}"
+
+                    if "class" in container_div.attrs:
+                        container_div["class"].append(container_div_class)
+                    else:
+                        container_div["class"] = [container_div_class]
 
                     content_div_class = f"content_{element_type}_{name}"
 
