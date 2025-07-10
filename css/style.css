@@ -111,8 +111,9 @@ nav {
   color: transparent; /* Hide "Menu" text */
 }
 
-.offcanvas.offcanvas-end.fullscreen {
-width: 100vw;
+.btn-close:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .offcanvas-body{
@@ -130,6 +131,10 @@ width: 100vw;
     cursor: pointer;
 }
 
+.offcanvas-backdrop {
+  background-color: black !important;
+  opacity: 1 !important;
+}
 
 .nav-item {
   display: inline-block;

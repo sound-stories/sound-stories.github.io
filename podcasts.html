@@ -25,28 +25,28 @@
 <div class="offcanvas-body">
 <!-- Close Button -->
 <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button">X</button><br/>
-<div class="nav-item">
-<a class="nav-link" href="commissions.html">Commissions</a><br/>
-<img alt="" class="hand-drawn-line-menu" src="img/menu_line1.svg"/><br/>
+<div class="nav-item mb-2">
+<a class="nav-link" href="commissions.html">Commissions</a>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line1.svg"/>
 </div>
-<div class="nav-item">
-<a class="nav-link" href="podcasts.html">Podcasts</a><br/>
-<img alt="" class="hand-drawn-line-menu" src="img/menu_line2.svg"/><br/>
+<div class="nav-item mb-2">
+<a class="nav-link" href="podcasts.html">Podcasts</a>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line2.svg"/>
 </div>
-<div class="nav-item">
-<a class="nav-link" href="songs.html">Songs</a><br/>
-<img alt="" class="hand-drawn-line-menu" src="img/menu_line3.svg"/><br/>
+<div class="nav-item mb-2">
+<a class="nav-link" href="songs.html">Songs</a>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line3.svg"/>
 </div>
-<div class="nav-item">
-<a class="nav-link" href="experiments.html">Experiments</a><br/>
-<img alt="" class="hand-drawn-line-menu" src="img/menu_line4.svg"/><br/>
+<div class="nav-item mb-2">
+<a class="nav-link" href="experiments.html">Experiments</a>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line4.svg"/>
 </div>
-<div class="nav-item">
-<a class="nav-link" href="studio.html">Studio</a><br/>
-<img alt="" class="hand-drawn-line-menu" src="img/menu_line5.svg"/><br/>
+<div class="nav-item mb-2">
+<a class="nav-link" href="studio.html">Studio Facilities</a>
+<img alt="" class="hand-drawn-line-menu" src="img/menu_line5.svg"/>
 </div>
-<div class="nav-item">
-<a class="nav-link" href="contact.html">Contact</a><br/>
+<div class="nav-item mb-2">
+<a class="nav-link" href="contact.html">Contact</a>
 </div>
 </div>
 </div>
@@ -56,14 +56,15 @@
 <div class="text-end me-4 content_top_podcasts" id="content_top"><p>Compositions lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
 nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
 wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-nisl ut aliquip ex ea commodo consequat</p></div>
+nisl ut aliquip ex ea commodo consequat
+<a href="#project-samples">View Work →</a></p></div>
 <img alt="podcasts title" class="img-fluid" src="img/titles/podcasts.png"/>
 </div>
 <div class="container mt-4 containter_middle_podcasts" id="container_middle">
 <div class="content_middle_podcasts" id="content_middle"><p><img alt="rig" src="img/animations/podcasts.gif"/></p></div>
 </div>
 <div class="container-fluid m-0 p-0 containter_bottom_podcasts" id="container_bottom">
-<h1 class="ps-3">↘ Project Samples</h1>
+<a name="project-samples"><h1 class="ps-3">↘ Project Samples</h1></a>
 <div class="m-0 py-1 content_bottom_podcasts" id="content_bottom"><p><a href="#" onclick="document.getElementById('vimeoModal1').style.display='block'; return false;">Book of Man</a></p>
 <img alt="hand-drawn divider" class="img-fluid hand-drawn-line" src="img/line1.svg"/>
 <p><a href="#" onclick="document.getElementById('vimeoModal2').style.display='block'; return false;">Anatomy</a></p>
@@ -90,22 +91,5 @@ nisl ut aliquip ex ea commodo consequat</p></div>
 <p>© 2025 Sound Stories</p>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-
-  const navbar = document.querySelector('.navbar');
-  const navbarHome = document.querySelector('.navbar a');
-  const offcanvas = document.getElementById('mainMenu');
-
-  offcanvas.addEventListener('show.bs.offcanvas', () => {
-    navbar.classList.add('white-bg');
-    navbarHome.classList.add('text-dark');
-  });
-
-  offcanvas.addEventListener('hide.bs.offcanvas', () => {
-    navbar.classList.remove('white-bg');
-    navbarHome.classList.remove('text-dark');
-  });
-
-</script>
 </body>
 </html>
