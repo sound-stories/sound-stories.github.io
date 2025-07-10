@@ -36,7 +36,7 @@ def add_vimeo_links(soup):
 def get_content(md_file, name):
 
     # Convert Markdown to HTML
-    with open(md_file, "r") as file:
+    with open(md_file, "r", encoding="utf-8") as file:
         md_content = file.read()
 
     html_content = markdown.markdown(md_content)
