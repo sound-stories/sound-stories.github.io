@@ -261,7 +261,7 @@ def process_navigation(
 
             img_tag = soup.new_tag(
                 "img",
-                src=lines[line_index],
+                src=f"img/{lines[line_index]}",
                 alt="hand-drawn divider",
             )
 
