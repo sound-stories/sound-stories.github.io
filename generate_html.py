@@ -130,11 +130,18 @@ def get_output_file(
     output_dir,
 ):
 
-    # Determine the output HTML file name
+    return Path(output_dir) / get_url_from_page_name(
+        page_name=page_name,
+    )
+
+
+def get_url_from_page_name(
+    page_name,
+):
     if page_name.lower() == "home":
-        return Path(output_dir) / "index.html"  # Special case for home page
+        return "index.html"  # Special case for home page
     else:
-        return Path(output_dir) / f"{page_name}.html"
+        return f"{page_name}.html"
 
 
 def generate_element(
@@ -202,6 +209,25 @@ def process_navigation(
     lines,
 ):
 
+    order = [
+        "home",
+        "commissions",
+        "podcasts",
+        "songs",
+        "studio_facilities",
+        "experiments",
+        "contact",
+    ]
+
+    page_names = sorted(
+        page_names,
+        key=lambda x: order.index(x) if x in order else len(order),
+    )
+
+    # remove home
+    if "home" in page_names:
+        page_names.remove("home")
+
     # Find the navigation element
     navItems = soup.find(id="navItems")
 
@@ -222,7 +248,8 @@ def process_navigation(
         div_tag = soup.new_tag("div")
         div_tag["class"] = "nav-item mb-2"
 
-        a_tag = soup.new_tag("a", href=f"{page_name}.html")
+        url = get_url_from_page_name(page_name)
+        a_tag = soup.new_tag("a", href=url)
         a_tag.string = make_title(page_name)
 
         div_tag.append(a_tag)
