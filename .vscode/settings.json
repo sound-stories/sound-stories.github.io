@@ -1,0 +1,16 @@
+{
+  "files.exclude": {
+    "**/__pycache__": true,
+    ".venv": true
+  },
+  "search.exclude": {
+    ".venv": true
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "debug.internalConsoleOptions": "neverOpen",
+  "black-formatter.args": ["--line-length=127"],
+  "flake8.args": ["--max-line-length=127", "--extend-ignore=E203"]
+}

@@ -1,180 +1,374 @@
 import os
 import os.path
-import markdown
 from pathlib import Path
 import shutil
 from bs4 import BeautifulSoup  # Import BeautifulSoup
+from bs4.element import Tag  # Import Tag for type checking
 
 
-def add_vimeo_links(soup):
-
-    # Process Vimeo links
-    modal_id = 0
-
-    for a_tag in soup.find_all("a", href=True):
-
-        href = a_tag["href"]
-
-        if "vimeo.com" in href:
-            modal_id += 1
-            video_id = href.split("/")[-1]
-            iframe = f"""
-            <div class="modal, pop-up" id="vimeoModal{modal_id}">
-                <iframe src="https://player.vimeo.com/video/{video_id}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-                <a onclick="document.getElementById('vimeoModal{modal_id}').style.display='none';">X</button>
-            </div>
-            """
-            # Replace the link with a clickable trigger
-            a_tag["href"] = "#"
-            a_tag["onclick"] = (
-                f"document.getElementById('vimeoModal{modal_id}').style.display='block'; return false;"
-            )
-            # Append the modal HTML at the end
-            soup.append(BeautifulSoup(iframe, "html.parser"))
-
-
-def get_content(md_file, name):
+def get_content(html_file):
 
     # Convert Markdown to HTML
-    with open(md_file, "r", encoding="utf-8") as file:
-        md_content = file.read()
-
-    html_content = markdown.markdown(md_content)
+    with open(html_file, "r", encoding="utf-8") as file:
+        html_content = file.read()
 
     # Parse the HTML content
     soup = BeautifulSoup(html_content, "html.parser")
 
-    # Replace <hr> with alternating hand-drawn lines
-    hand_drawn_lines = [
-        "img/line1.svg",
-        "img/line2.svg",
-        "img/line3.svg",
-    ]
-
-    for idx, hr_tag in enumerate(soup.find_all("hr")):
-        img_tag = soup.new_tag(
-            "img",
-            src=hand_drawn_lines[idx % len(hand_drawn_lines)],
-            alt="hand-drawn divider",
-        )
-        # Keep your responsive bootstrap style
-        img_tag["class"] = ["img-fluid", "hand-drawn-line"]
-        hr_tag.replace_with(img_tag)
-
-    # # Add 'img-fluid' class to all <img> tags
-    # for img in soup.find_all("img"):
-    #     existing_classes = img.get("class", [])
-    #     existing_classes.append("img-fluid")
-    #     img["class"] = existing_classes
-
-    add_vimeo_links(soup)
-
     return soup
 
 
-# Paths
-ASSETS_DIR = "assets"
-CONTENT_DIR = "content"
-OUTPUT_DIR = "html"
-TEMPLATE_FILE = "template.html"
+def process_element_file(
+    content_div,
+    element_file,
+):
 
-# Ensure output directory exists
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+    content = get_content(
+        html_file=element_file,
+    )
+
+    content_div.clear()
+    content_div.append(content)
 
 
-# Copy static assets (img, css, js) to output directory
-for folder in ["img", "css", "js", "fonts"]:
-    source = Path(ASSETS_DIR) / folder
-    destination = Path(OUTPUT_DIR) / folder
-    if source.exists():
-        shutil.copytree(source, destination, dirs_exist_ok=True)
-        print(f"Copied {folder} from {source} to {destination}")
+def process_element_folder(
+    content_div,
+    element_folder,
+):
 
-# Copy CNAME
-source_file = "CNAME"
-if os.path.exists(source_file):
-    output_file = Path(OUTPUT_DIR) / source_file
-    shutil.copy(source_file, output_file)
+    content_div.clear()
 
-content_path = Path(CONTENT_DIR)
+    for file in sorted(element_folder.glob("*.html")):
 
-# Process each Markdown file
-for subfolder in content_path.iterdir():
-    if subfolder.is_dir():
+        content = get_content(html_file=file)
+        content_div.append(content)
 
-        name = subfolder.stem.lower()
 
-        # Load the HTML template
-        with open(TEMPLATE_FILE, "r", encoding="utf-8") as template_file:
-            template = template_file.read()
+def add_class(
+    element,
+    class_name,
+):
 
-        template_soup = BeautifulSoup(
-            template,
-            "html.parser",
+    if "class" in element.attrs:
+        element["class"].append(class_name)
+    else:
+        element["class"] = [class_name]
+
+
+def copy_assets(
+    assets_dir,
+    output_dir,
+):
+
+    # Copy static assets (img, css, js) to output directory
+    for folder in ["img", "css", "js", "fonts"]:
+
+        source = Path(assets_dir) / folder
+        destination = Path(output_dir) / folder
+
+        if source.exists():
+            shutil.copytree(source, destination, dirs_exist_ok=True)
+
+
+def copy_cname(
+    output_dir,
+):
+
+    # Copy CNAME
+    source_file = "CNAME"
+
+    if os.path.exists(source_file):
+        output_file = Path(output_dir) / source_file
+        shutil.copy(source_file, output_file)
+
+
+def process_images(
+    soup,
+    page_name,
+):
+
+    for img in soup.find_all("img"):
+        if "src" in img.attrs and "{page}" in img["src"]:
+            img["src"] = img["src"].replace("{page}", page_name)
+        if "alt" in img.attrs and "{page}" in img["alt"]:
+            img["alt"] = img["alt"].replace("{page}", page_name)
+
+
+def load_template(
+    template_path,
+):
+    with open(template_path, "r", encoding="utf-8") as template_file:
+        template = template_file.read()
+    return BeautifulSoup(template, "html.parser")
+
+
+def make_title(page_name):
+    page_name = page_name.replace("-", " ")
+    page_name = page_name.replace("_", " ")
+    words = page_name.split(" ")
+    return " ".join(word.capitalize() for word in words)
+
+
+def set_title(
+    soup,
+    page_name,
+):
+
+    title = make_title(page_name)
+
+    # Set the title of the HTML document
+    if soup.title:
+        soup.title.string = title
+    else:
+        new_title = soup.new_tag("title")
+        new_title.string = title
+        soup.head.append(new_title)
+
+
+def get_output_file(
+    page_name,
+    output_dir,
+):
+
+    # Determine the output HTML file name
+    if page_name.lower() == "home":
+        return Path(output_dir) / "index.html"  # Special case for home page
+    else:
+        return Path(output_dir) / f"{page_name}.html"
+
+
+def generate_element(
+    page_folder,
+    page_name,
+    element_type,
+    template_soup,
+    lines,
+):
+
+    container_id = f"container_{element_type}"
+    container_div = template_soup.find(id=container_id)
+
+    if not container_div or type(container_div) is not Tag:
+        return
+
+    add_class(
+        element=container_div,
+        class_name=f"containter_{element_type}_{page_name}",
+    )
+
+    # Find the content div within the container
+    content_id = f"content_{element_type}"
+    content_div = template_soup.find(id=content_id)
+
+    if not content_div:
+        container_div.decompose()
+
+    element_file = page_folder / f"{element_type}.html"
+    element_folder = page_folder / element_type
+
+    add_class(
+        element=container_div,
+        class_name=f"content_{element_type}_{page_name}",
+    )
+
+    if element_file.exists():
+
+        process_element_file(
+            content_div=content_div,
+            element_file=element_file,
         )
 
-        # Generate a title from the file name
-        title = name.replace("-", " ").capitalize()
+    elif element_folder.exists():
 
-        template_soup.title.string = title
+        process_element_folder(
+            content_div=content_div,
+            element_folder=element_folder,
+        )
 
-        for img in template_soup.find_all("img"):
-            if "src" in img.attrs and "{page}" in img["src"]:
-                img["src"] = img["src"].replace("{page}", name)
-                print(f"Updated image src: {img['src']}")
-            if "alt" in img.attrs and "{page}" in img["alt"]:
-                img["alt"] = img["alt"].replace("{page}", name)
+    else:
+        container_div.decompose()
 
-        # Determine the output HTML file name
-        if name == "home":
-            output_file = Path(OUTPUT_DIR) / "index.html"  # Special case for home page
-        else:
-            output_file = Path(OUTPUT_DIR) / f"{name}.html"
 
-        for element_type in ["large", "top", "middle", "bottom"]:
+def get_page_name(
+    page_folder,
+):
+    # Get the page name from the folder name
+    return page_folder.stem.lower()
 
-            container_id = f"container_{element_type}"
-            container_div = template_soup.find(id=container_id)
 
-            if container_div:
+def process_navigation(
+    soup,
+    page_names,
+    lines,
+):
 
-                md_file = subfolder / f"{element_type}.md"
+    # Find the navigation element
+    navItems = soup.find(id="navItems")
 
-                if not md_file.exists():
-                    # delete content_div
-                    template_soup.find(id=container_id).decompose()
-                else:
+    if not navItems:
+        print("No navItems element found in the template.")
+        return
 
-                    content_id = f"content_{element_type}"
+    # Clear existing navigation items
+    navItems.clear()
 
-                    content_div = template_soup.find(id=content_id)
+    number_of_pages = len(page_names)
 
-                    print(f"Processing {md_file}")
+    # Create navigation links
+    for index in range(number_of_pages):
 
-                    content = get_content(
-                        md_file=md_file,
-                        name=name,
-                    )
+        page_name = page_names[index]
 
-                    content_div.clear()
-                    content_div.append(content)
+        div_tag = soup.new_tag("div")
+        div_tag["class"] = "nav-item mb-2"
 
-                    container_div_class = f"containter_{element_type}_{name}"
+        a_tag = soup.new_tag("a", href=f"{page_name}.html")
+        a_tag.string = make_title(page_name)
 
-                    if "class" in container_div.attrs:
-                        container_div["class"].append(container_div_class)
-                    else:
-                        container_div["class"] = [container_div_class]
+        div_tag.append(a_tag)
+        navItems.append(div_tag)
 
-                    content_div_class = f"content_{element_type}_{name}"
+        if index < (number_of_pages - 1):
 
-                    if "class" in content_div.attrs:
-                        content_div["class"].append(content_div_class)
-                    else:
-                        content_div["class"] = [content_div_class]
+            line_number = (index % len(lines)) + 1
 
-        # Save the resulting HTML file
-        with open(output_file, "w", encoding="utf-8") as file:
-            file.write(str(template_soup))
+            img_tag = soup.new_tag(
+                "img",
+                src=f"img/menu_line{line_number}.svg",
+                alt="hand-drawn divider",
+            )
 
-        print(f"Generated: {output_file}")
+            img_tag["class"] = "hand-drawn-line-menu"
+
+            div_tag.append(img_tag)
+
+
+def generate_page(
+    page_folder,
+    output_dir,
+    template_path,
+    page_names,
+    white_lines,
+    black_lines,
+):
+
+    page_name = get_page_name(page_folder)
+
+    template_soup = load_template(template_path)
+
+    set_title(
+        soup=template_soup,
+        page_name=page_name,
+    )
+
+    process_navigation(
+        soup=template_soup,
+        page_names=page_names,
+        lines=white_lines,
+    )
+
+    process_images(
+        soup=template_soup,
+        page_name=page_name,
+    )
+
+    for element_type in ["large", "top", "middle", "bottom"]:
+
+        generate_element(
+            page_folder=page_folder,
+            page_name=page_name,
+            element_type=element_type,
+            template_soup=template_soup,
+            lines=black_lines,
+        )
+
+    output_file = get_output_file(
+        page_name=page_name,
+        output_dir=output_dir,
+    )
+
+    # Save the resulting HTML file
+    with open(output_file, "w", encoding="utf-8") as file:
+        file.write(str(template_soup))
+
+    print(f"Generated: {output_file}")
+
+
+def get_lines(img_dir, lines_dir):
+
+    lines = []
+    search_path = Path(img_dir) / lines_dir
+
+    for line_file in sorted(search_path.glob("*.svg")):
+
+        if line_file.is_file() and line_file.name.startswith("line"):
+
+            image_name = line_file.name
+            image_url = f"{lines_dir}/{image_name}"
+
+            lines.append(image_url)
+
+    return lines
+
+
+def generate_website(
+    content_dir,
+    output_dir,
+    template_path,
+    white_lines,
+    black_lines,
+):
+
+    content_path = Path(content_dir)
+
+    page_names = [get_page_name(f) for f in content_path.iterdir() if f.is_dir()]
+
+    # Process each Markdown file
+    for page_folder in content_path.iterdir():
+        if page_folder.is_dir():
+
+            generate_page(
+                page_folder=page_folder,
+                output_dir=output_dir,
+                template_path=template_path,
+                page_names=page_names,
+                white_lines=white_lines,
+                black_lines=black_lines,
+            )
+
+
+if __name__ == "__main__":
+
+    # Paths
+    output_dir = "html"
+    assets_dir = "assets"
+
+    # Ensure output directory exists
+    os.makedirs(output_dir, exist_ok=True)
+
+    copy_assets(
+        assets_dir=assets_dir,
+        output_dir=output_dir,
+    )
+
+    white_lines = get_lines(
+        img_dir=Path(output_dir) / "img",
+        lines_dir="white_lines",
+    )
+
+    black_lines = get_lines(
+        img_dir=Path(output_dir) / "img",
+        lines_dir="black_lines",
+    )
+
+    copy_cname(
+        output_dir=output_dir,
+    )
+
+    generate_website(
+        content_dir="content",
+        output_dir=output_dir,
+        template_path="template.html",
+        white_lines=white_lines,
+        black_lines=black_lines,
+    )
