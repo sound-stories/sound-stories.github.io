@@ -257,11 +257,11 @@ def process_navigation(
 
         if index < (number_of_pages - 1):
 
-            line_number = (index % len(lines)) + 1
+            line_index = index % len(lines)
 
             img_tag = soup.new_tag(
                 "img",
-                src=f"img/menu_line{line_number}.svg",
+                src=lines[line_index],
                 alt="hand-drawn divider",
             )
 
