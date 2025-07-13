@@ -13,6 +13,10 @@
 }
 
 
+body {
+  font-family: 'Overpass', sans-serif;
+}
+
 html {
   margin: 0;
   padding: 0;
@@ -165,11 +169,18 @@ nav {
 
 #content_large {
     font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
+    text-align: left;
 }
 
 #content_top {
     background-color: #000000;
     color: #ffffff;
+
+    font-family: 'Overpass', sans-serif;
+    font-weight: 300;
+
+    text-align: left;
+    
 }
 
 #content_top img {
