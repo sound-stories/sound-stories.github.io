@@ -12,22 +12,16 @@
   font-display: swap;
 }
 
-
-body {
-  font-family: 'Overpass', sans-serif;
-}
-
 html {
   margin: 0;
   padding: 0;
 }
 
 body {
-    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
-    color: rgb(204, 204, 204);
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    font-family: 'Overpass', sans-serif;
 }
 
 a {
@@ -39,20 +33,6 @@ a {
 a:hover {
     color: rgb(255, 209, 68); 
 }
-
-
-h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #f9dc5c; 
-}
-
-h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #f9dc5c;
-}
-
 
 footer {
     background: #02020f;
@@ -67,14 +47,22 @@ nav {
     margin-bottom: 0;
 }
 
+#navbar-logo{
+    z-index: 100000;
+}
+
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .navbar {
     background-color: #000000;
+}
+
+#mainMenu {
+    background-color: #000000;
     padding: 0px 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
     font-weight: 300; /* thinner weight */
     letter-spacing: 0.2em;
     font-size: 1.5rem;
@@ -84,35 +72,24 @@ nav {
     margin-bottom: 0;
 }
 
-.navbar a {
+#mainMenu a {
     color: #ffffff;
 }
 
-
-.navbar a:hover {
+#mainMenu a:hover {
     color: rgb(255, 209, 68); 
 }
 
-
-#mainMenu {
-    background-color: #000000;
+.btn-close{
+    padding: 0px 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300; /* thinner weight */
+    letter-spacing: 0.2em;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
     color: #ffffff;
-}
-
-/* Turn navbar white */
-.navbar.white-bg {
-  background-color: white !important;
-}
-
-
-/* When active, turn it into an X */
-.button.menu-open::after {
-  content: '✖';  /* Unicode X */
-  color: black;
-}
-
-.button.menu-open {
-  color: transparent; /* Hide "Menu" text */
+    margin-bottom: 0;
 }
 
 .btn-close:focus {
@@ -157,6 +134,12 @@ nav {
   margin-left: auto;
 }
 
+#pageTitle {
+    width: 25%; 
+    height: auto;
+    display: block;
+    margin: auto; 
+}
 
 .hand-drawn-line {
     padding-left: 1rem;
@@ -168,6 +151,7 @@ nav {
 }
 
 #content_large {
+    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
     font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
     text-align: left;
 }
