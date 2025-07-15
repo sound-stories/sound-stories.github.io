@@ -210,12 +210,12 @@ def process_navigation(
 ):
 
     order = [
-        "home",
         "commissions",
         "podcasts",
         "songs",
         "studio_facilities",
         "experiments",
+        "about",
         "contact",
     ]
 
@@ -251,6 +251,7 @@ def process_navigation(
         url = get_url_from_page_name(page_name)
         a_tag = soup.new_tag("a", href=url)
         a_tag.string = make_title(page_name)
+        a_tag["class"] = page_name.replace("_", "-")
 
         div_tag.append(a_tag)
         navItems.append(div_tag)
