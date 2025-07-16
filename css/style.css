@@ -35,6 +35,14 @@ a.large-hover {
   display: inline-block; /* Helps with layout */
 }
 
+a.large-hover:hover {
+  color: rgb(140, 140, 140) 
+}
+
+a:hover {
+    color: rgb(255, 209, 68); 
+}
+
 a.large-hover::after {
   z-index: 1000; /* Ensure the background is behind the text */
   content: "";
@@ -102,9 +110,6 @@ a.contact:hover {
     color: #5691a4  !important;
 }
 
-a:hover {
-    color: rgb(255, 209, 68); 
-}
 
 footer {
     background: #02020f;
