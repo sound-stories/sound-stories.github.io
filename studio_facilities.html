@@ -15,7 +15,7 @@
 <nav class="navbar">
 <div class="container-fluid justify-content-between">
 <div id="navbar-logo">
-<a href="index.html"><img alt="Sound Stories Logo" class="img-fluid" src="img/white_logo.svg" width="100%"/></a>
+<a href="index.html"><img alt="Sound Stories Logo" class="img-fluid" src="img/white_logo.svg"/></a>
 </div>
 <a aria-controls="mainMenu" class="navbar-show-menu" data-bs-target="#mainMenu" data-bs-toggle="offcanvas" type="button">
 <span class="navbar-toggler-icon"></span>
@@ -45,5 +45,30 @@
 <footer class="bg-dark text-white text-center m-0 p-0">
 <p>© 2025 Sound Stories</p>
 </footer>
+<script>
+
+  document.querySelectorAll('#menu_bottom a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('data-target');
+
+      // Hide all sections
+      document.querySelectorAll('#content_bottom .sub-content').forEach(section => {
+        section.style.display = 'none';
+      });
+
+      // Show the target section
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        targetSection.style.display = 'block';
+      }
+
+    });
+  });
+
+</script>
 </body>
 </html>

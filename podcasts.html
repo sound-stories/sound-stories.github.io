@@ -15,7 +15,7 @@
 <nav class="navbar">
 <div class="container-fluid justify-content-between">
 <div id="navbar-logo">
-<a href="index.html"><img alt="Sound Stories Logo" class="img-fluid" src="img/white_logo.svg" width="100%"/></a>
+<a href="index.html"><img alt="Sound Stories Logo" class="img-fluid" src="img/white_logo.svg"/></a>
 </div>
 <a aria-controls="mainMenu" class="navbar-show-menu" data-bs-target="#mainMenu" data-bs-toggle="offcanvas" type="button">
 <span class="navbar-toggler-icon"></span>
@@ -50,12 +50,38 @@ Book of Man is a critically acclaimed, feature-length musical podcast drama, wri
 <div id="content_middle"><img alt="Rig" src="img/animations/podcasts.gif"/></div>
 </div>
 <div class="container-fluid m-0 p-0 containter_bottom_podcasts content_bottom_podcasts" id="container_bottom">
-<a name="project-samples"><h1 class="ps-3">↘ Project Samples</h1></a>
-<div class="m-0 py-1" id="content_bottom"><iframe src="https://player.vimeo.com/video/436202793"></iframe><iframe src="https://player.vimeo.com/video/436202793"></iframe><iframe src="https://player.vimeo.com/video/436202793"></iframe></div>
+<a name="project-samples"><h1 class="ps-3">Project Samples ↘</h1></a>
+<div id="content_bottom"><div class="sub-content" id="anatomy"><iframe src="https://player.vimeo.com/video/436202793"></iframe></div><div class="sub-content" id="another"><iframe src="https://player.vimeo.com/video/436202793"></iframe></div><div class="sub-content" id="book_of_man"><iframe src="https://player.vimeo.com/video/436202793"></iframe></div></div>
+<div id="menu_bottom"><div class="sub-menu-item"><a data-target="anatomy">Anatomy</a><img alt="hand-drawn divider" class="hand-drawn-line-menu" src="img/black_lines/line1.svg"/></div><div class="sub-menu-item"><a data-target="another">Another</a><img alt="hand-drawn divider" class="hand-drawn-line-menu" src="img/black_lines/line2.svg"/></div><div class="sub-menu-item"><a data-target="book_of_man">Book Of Man</a></div></div>
 </div>
 <!-- Footer -->
 <footer class="bg-dark text-white text-center m-0 p-0">
 <p>© 2025 Sound Stories</p>
 </footer>
+<script>
+
+  document.querySelectorAll('#menu_bottom a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('data-target');
+
+      // Hide all sections
+      document.querySelectorAll('#content_bottom .sub-content').forEach(section => {
+        section.style.display = 'none';
+      });
+
+      // Show the target section
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        targetSection.style.display = 'block';
+      }
+
+    });
+  });
+
+</script>
 </body>
 </html>
