@@ -20,7 +20,7 @@
   <nav class="navbar">
     <div class="container-fluid justify-content-between">
       <div id="navbar-logo" >
-        <a href="index.html"><img src="img/white_logo.svg" alt="Sound Stories Logo" class="img-fluid" width="100%"></a>
+        <a href="index.html"><img src="img/white_logo.svg" alt="Sound Stories Logo" class="img-fluid" ></a>
       </div>
       <a class="navbar-show-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainMenu" aria-controls="mainMenu">
          <span class="navbar-toggler-icon"></span>
@@ -69,9 +69,12 @@
 
   <div id="container_bottom" class="container-fluid m-0 p-0">
     
-    <a name="project-samples"><h1 class="ps-3">&#8600; Project Samples</h1></a>
+    <a name="project-samples"><h1 class="ps-3">Project Samples &#8600;</h1></a>
     
-    <div id="content_bottom" class="m-0 py-1">
+    <div id="content_bottom">
+    </div>
+
+    <div id="menu_bottom">
     </div>
 
   </div>
@@ -80,6 +83,32 @@
   <footer class="bg-dark text-white text-center m-0 p-0">
     <p>&copy; 2025 Sound Stories</p>
   </footer>
+
+<script>
+
+  document.querySelectorAll('#menu_bottom a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('data-target');
+
+      // Hide all sections
+      document.querySelectorAll('#content_bottom .sub-content').forEach(section => {
+        section.style.display = 'none';
+      });
+
+      // Show the target section
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        targetSection.style.display = 'block';
+      }
+
+    });
+  });
+
+</script>
 
 </body>
 </html>

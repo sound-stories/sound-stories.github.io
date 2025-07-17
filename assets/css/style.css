@@ -43,49 +43,6 @@ a:hover {
     color: rgb(255, 209, 68); 
 }
 
-a.large-hover::after {
-  z-index: 1000; /* Ensure the background is behind the text */
-  content: "";
-  display: block;
-  width: 5em;
-  height: 1em;
-  background-size: auto;
-  position: absolute;
-  top: 50%; /* show below the link */
-  left: 20%;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-a.large-hover:hover::after {
-  opacity: 1;
-}
-
-a.large-commissions::after {
-  background-image: url('../img/find_out_more/commissions.svg');
-}
-
-a.large-podcasts::after {
-  background-image: url('../img/find_out_more/podcasts.svg');
-}
-
-a.large-studio-facilities::after {
-  background-image: url('../img/find_out_more/studio-facilities.svg');
-}
-
-a.large-songs::after {
-  background-image: url('../img/find_out_more/songs.svg');
-}
-
-a.large-experiments::after {
-  background-image: url('../img/find_out_more/experiments.svg');
-}
-
-a.large-contact::after {
-  background-image: url('../img/find_out_more/contact.svg');
-}
-
 a.commissions:hover {
   color: #97a058  !important;
 }
@@ -124,8 +81,15 @@ nav {
     margin-bottom: 0;
 }
 
-#navbar-logo{
-    z-index: 100000;
+#navbar-logo {
+    display: block;  
+    /* Responsive logo width:
+       - Minimum: 120px
+       - Preferred: 20% of viewport width
+       - Maximum: 300px
+       Ensures the logo scales fluidly but stays within reasonable bounds */
+    width: clamp(120px, 20vw, 300px);
+    height: auto; /* Maintain aspect ratio */ 
 }
 
 .navbar-toggler-icon {
@@ -217,15 +181,6 @@ nav {
     margin: auto; 
 }
 
-.hand-drawn-line {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    width: 100%;
-    max-width: 100%;
-    display: block;
-    margin: 0 auto;
-}
-
 #content_large {
     font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
     font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
@@ -235,12 +190,9 @@ nav {
 #content_top {
     background-color: #000000;
     color: #ffffff;
-
     font-family: 'Overpass', sans-serif;
     font-weight: 300;
-
     text-align: left;
-    
 }
 
 #content_top img {
@@ -265,6 +217,12 @@ nav {
     width: 60%;
 }
 
+#container_bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .content_bottom_commissions {
     background-color: rgb(255, 209, 68); 
 }
@@ -284,8 +242,14 @@ nav {
 }
 
 #container_bottom h1 {
+    position: relative;
+    top: -2.0rem;
+    left: 0.5rem;
+    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
     color: #000000;
     font-size: 1.0rem;
+    /* make bold */
+    font-weight: bold;
     background-color: rgb(255, 255, 255); 
     width: 100%;
     padding-left: 0rem;
@@ -296,7 +260,32 @@ nav {
     color: #ffffff; 
 }
 
+#content_bottom {
+  flex: 1; /* Takes up remaining space */
+  padding: 1rem;
+}
 
+.sub-content{
+  display: none;
+}
+
+#menu_bottom {
+  width: 30%; 
+  padding: 1rem;
+  font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
+  font-weight: 300; /* thinner weight */
+  letter-spacing: 0.2em;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 0;
+}
+
+#menu_bottom a {
+    color: #000000;
+    /*set pointer to hand*/
+    cursor: pointer;
+}
 
 .pop-up {
     display:none; 
@@ -323,3 +312,4 @@ nav {
     color: rgb(255, 209, 68); 
     cursor: hand;
 }
+
