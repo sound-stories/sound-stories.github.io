@@ -12,16 +12,13 @@
   font-display: swap;
 }
 
-html {
-  margin: 0;
-  padding: 0;
-}
-
-body {
+html, body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
     font-family: 'Overpass', sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -72,6 +69,9 @@ footer {
     background: #02020f;
     color: #ffffff;
     text-align: center;
+    display: flex;
+    align-items: center;    /* vertical alignment */
+    justify-content: center; /* horizontal centering */
     padding: 0;
     margin: 0;
     font-size: 0.9rem;
@@ -215,6 +215,10 @@ nav {
 
 .content_middle_songs img {
     width: 60%;
+}
+
+#container_large {
+  flex: 1; /* Takes up remaining space */
 }
 
 #container_bottom {
