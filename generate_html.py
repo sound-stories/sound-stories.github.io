@@ -42,6 +42,11 @@ def process_element_folder(
     content_div.clear()
     names = []
 
+    sub_div = template_soup.new_tag("div")
+    sub_div["id"] = "sub-content-instructions"
+    sub_div.append("Click on the menu items to view content.")
+    content_div.append(sub_div)
+
     for file in sorted(element_folder.glob("*.html")):
 
         name = file.stem
