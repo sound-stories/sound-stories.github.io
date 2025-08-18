@@ -51,14 +51,26 @@
 
   </div>
 
-  <div id="container_top" class="container-fluid d-flex justify-content-end align-items-center bg-black text-white py-3">
+<div id="container_top" class="container-fluid bg-black text-white py-3">
+  <div class="row align-items-center flex-column flex-md-row">
 
-    <div class="text-end me-4" id="content_top">
+    <!-- Image for small screens (centered on top) -->
+    <div class="col-12 d-block d-md-none text-center mb-3">
+      <img alt="{page} title" src="img/titles/{page}.svg" aria-hidden="true" class="smallTop">
     </div>
 
-    <img alt="{page} title" class="img-fluid" src="img/titles/{page}.svg" id="pageTitle">
+    <!-- Text content: full width on small, 50% on md+ -->
+    <div id="content_top" class="col-12 col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <!-- Your content goes here -->
+    </div>
+
+    <!-- Image for large screens (right side) -->
+    <div class="col-12 col-md-6 d-none d-md-flex justify-content-center">
+      <img alt="{page} title" src="img/titles/{page}.svg" class="img-fluid largeTop">
+    </div>
 
   </div>
+</div>
 
   <div id="container_middle" class="container mt-4">
 

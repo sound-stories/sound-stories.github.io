@@ -265,12 +265,12 @@ def process_navigation(
 ):
 
     order = [
+        "about",
         "commissions",
         "podcasts",
         "songs",
         "studio_facilities",
         "experiments",
-        "about",
         "contact",
     ]
 
