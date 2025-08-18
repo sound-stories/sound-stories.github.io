@@ -54,7 +54,7 @@
 </div>
 <div class="container-fluid m-0 p-0 containter_bottom_commissions content_bottom_commissions" id="container_bottom">
 <a name="project-samples"><h1 class="ps-3">Project Samples ↘</h1></a>
-<div id="content_bottom"><div class="sub-content" id="anatomy"><iframe src="https://player.vimeo.com/video/436202793"></iframe></div><div class="sub-content" id="another"><iframe src="https://player.vimeo.com/video/436202793"></iframe></div><div class="sub-content" id="book_of_man"><iframe src="https://player.vimeo.com/video/436202793"></iframe></div></div>
+<div id="content_bottom"><div id="sub-content-instructions">Click on the menu items to view content.</div><div class="sub-content" id="anatomy"><iframe src="https://player.vimeo.com/video/436202793"></iframe></div><div class="sub-content" id="another"><iframe src="https://player.vimeo.com/video/436202793"></iframe></div><div class="sub-content" id="book_of_man"><iframe src="https://player.vimeo.com/video/436202793"></iframe></div></div>
 <div id="menu_bottom"><div class="sub-menu-item"><a data-target="anatomy">Anatomy</a><img alt="hand-drawn divider" class="hand-drawn-line-menu" src="img/black_lines/line1.svg"/></div><div class="sub-menu-item"><a data-target="another">Another</a><img alt="hand-drawn divider" class="hand-drawn-line-menu" src="img/black_lines/line2.svg"/></div><div class="sub-menu-item"><a data-target="book_of_man">Book Of Man</a></div></div>
 </div>
 <!-- Footer -->
@@ -67,8 +67,14 @@
       e.preventDefault();
       
       const targetId = this.getAttribute('data-target');
-
+      
       // Hide all sections
+      const subContentInstructions = document.getElementById("sub-content-instructions");
+      
+      if (subContentInstructions) {
+        subContentInstructions.style.display = 'none';
+      }
+
       document.querySelectorAll('#content_bottom .sub-content').forEach(section => {
         section.style.display = 'none';
       });

@@ -61,8 +61,14 @@
       e.preventDefault();
       
       const targetId = this.getAttribute('data-target');
-
+      
       // Hide all sections
+      const subContentInstructions = document.getElementById("sub-content-instructions");
+      
+      if (subContentInstructions) {
+        subContentInstructions.style.display = 'none';
+      }
+
       document.querySelectorAll('#content_bottom .sub-content').forEach(section => {
         section.style.display = 'none';
       });
