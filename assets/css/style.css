@@ -307,6 +307,7 @@ nav {
 
 #menu_bottom {
   width: 30%; 
+  min-width: 300px;
   padding: 1rem;
   font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
   font-weight: 300; /* thinner weight */
@@ -315,6 +316,7 @@ nav {
   font-weight: bold;
   text-decoration: none;
   margin-bottom: 0;
+  text-align: right;
 }
 
 #menu_bottom a {
