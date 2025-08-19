@@ -243,6 +243,10 @@ nav {
     background-color: rgb(163, 98, 67); 
 }
 
+.content_bottom_studio_facilities {
+  background-color: #995b66;
+}
+
 #container_bottom a {
     color: #000000;
     font-size: 2.0rem;
@@ -271,6 +275,7 @@ nav {
 #content_bottom {
   flex: 1; /* Takes up remaining space */
   padding: 1rem;
+  color: #ffffff;
 }
 
 .sub-content{
@@ -331,3 +336,9 @@ nav {
     cursor: hand;
 }
 
+
+video {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
