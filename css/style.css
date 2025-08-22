@@ -94,6 +94,7 @@ nav {
     width: 250px;
     height: auto; /* Maintain aspect ratio */ 
     padding-left: 6px;
+    z-index: 100000; /* Ensure it stays above other elements */
 }
 
 .navbar-toggler-icon {
@@ -190,7 +191,7 @@ nav {
     font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
     line-height: 1.4; /* relative to the font size */
     text-align: left;
-    padding-top: 0.6em;
+    padding-top: 0.5em;
 }
 
 #content_top {
