@@ -90,8 +90,10 @@ nav {
        - Preferred: 20% of viewport width
        - Maximum: 300px
        Ensures the logo scales fluidly but stays within reasonable bounds */
-    width: clamp(120px, 20vw, 300px);
+    /*width: clamp(120px, 20vw, 300px);*/
+    width: 250px;
     height: auto; /* Maintain aspect ratio */ 
+    padding-left: 6px;
 }
 
 .navbar-toggler-icon {
@@ -186,7 +188,9 @@ nav {
 #content_large {
     font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
     font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
+    line-height: 1.4; /* relative to the font size */
     text-align: left;
+    padding-top: 0.6em;
 }
 
 #content_top {
