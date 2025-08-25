@@ -20,7 +20,7 @@ html, body {
     display: flex;
     flex-direction: column;
     color: rgb(204, 204, 204) !important; 
-    background-color: rgb(246, 245, 252) !important; 
+    background-color: rgb(255, 255, 255) !important; 
 }
 
 a {
@@ -178,14 +178,14 @@ nav {
   display: block;
   margin-left: auto;
 }
-
+/*
 #pageTitle {
     width: 25%; 
     height: auto;
     display: block;
     margin: auto; 
 }
-
+*/
 #content_large {
     font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
     font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
@@ -204,11 +204,14 @@ nav {
 }
 
 #container_top img.smallTop {
-    height: clamp(16px, 20vw, 80px);
+    /*height: clamp(16px, 20vw, 80px);*/
+    height: 70px;
 }
 
 #container_top img.largeTop {
-    height: clamp(16px, 30vw, 100px);
+    /*height: clamp(16px, 30vw, 100px) !important;*/
+    /*height: clamp(16px, 30vw, 70px);*/
+    height: 70px;
 }
 
 #content_middle {
@@ -218,21 +221,21 @@ nav {
 }
 
 .content_middle_commissions video {
-  width: 80%;
+  width: 60%;
   height: auto;
-  max-width: 80%;
+  max-width: 60%;
 }
 
 .content_middle_podcasts video {
-  width: 80%;
+  width: 60%;
   height: auto;
-  max-width: 80%;
+  max-width: 60%;
 }
 
 .content_middle_songs video {
-  width: 80%;
+  width: 60%;
   height: auto;
-  max-width: 80%;
+  max-width: 60%;
 }
 
 .content_middle_studio_facilities video {
@@ -252,7 +255,7 @@ nav {
 }
 
 .content_bottom_commissions {
-    background-color: rgb(255, 209, 68); 
+    background-color: #97a058; 
 }
 
 .content_bottom_podcasts {
