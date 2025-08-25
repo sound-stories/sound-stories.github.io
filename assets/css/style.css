@@ -198,6 +198,11 @@ nav {
   color: #ffffff;
 }
 
+.titleRight {
+  text-align: right !important;
+  padding-right: 2.0rem;
+}
+
 #content_large {
     font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
     font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
