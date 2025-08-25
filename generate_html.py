@@ -147,6 +147,18 @@ def process_images(
             img["alt"] = img["alt"].replace("{page}", page_name)
 
 
+def process_spans(
+    soup,
+    page_name,
+):
+
+    for span in soup.find_all("span"):
+        # check if span text contain {page}
+        if span.string and "{page}" in span.string:
+            page_name = page_name[0].upper() + page_name[1:]
+            span.string = span.string.replace("{page}", page_name)
+
+
 def load_template(
     template_path,
 ):
@@ -356,6 +368,11 @@ def generate_page(
     )
 
     process_images(
+        soup=template_soup,
+        page_name=page_name,
+    )
+
+    process_spans(
         soup=template_soup,
         page_name=page_name,
     )
