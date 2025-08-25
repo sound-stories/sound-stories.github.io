@@ -19,8 +19,12 @@ html, body {
     font-family: 'Overpass', sans-serif;
     display: flex;
     flex-direction: column;
-    color: rgb(204, 204, 204) !important; 
-    background-color: rgb(255, 255, 255) !important; 
+    color: rgb(204, 204, 204);
+    background-color: rgb(255, 255, 255);
+}
+
+#body_experiments {
+    background-color: rgb(0, 0, 0) !important; 
 }
 
 a {
@@ -215,15 +219,15 @@ nav {
 }
 
 #content_middle {
-    text-align: left;
+    text-align: right;
     padding: 0rem 0rem 0rem 0rem;
     margin: 0rem 0rem 3rem 0rem;
 }
 
 .content_middle_commissions video {
-  width: 60%;
+  width: 55%;
   height: auto;
-  max-width: 60%;
+  max-width: 55%;
 }
 
 .content_middle_podcasts video {
