@@ -42,11 +42,6 @@ def process_element_folder(
     content_div.clear()
     names = []
 
-    sub_div = template_soup.new_tag("div")
-    sub_div["id"] = "sub-content-instructions"
-    sub_div.append("Click on the menu items to view content.")
-    content_div.append(sub_div)
-
     for file in sorted(element_folder.glob("*.html")):
 
         name = file.stem
@@ -71,7 +66,7 @@ def process_element_folder(
             title = make_title(name)
 
             div_tag = template_soup.new_tag("div")
-            div_tag["class"] = "sub-menu-item"
+            div_tag["class"] = "nav-sub-item"
 
             anchor_tag = template_soup.new_tag("a")
             anchor_tag["data-target"] = name
@@ -90,7 +85,7 @@ def process_element_folder(
                     alt="hand-drawn divider",
                 )
 
-                img_tag["class"] = "hand-drawn-line-menu"
+                img_tag["class"] = "hand-drawn-line-sub-menu"
 
                 div_tag.append(img_tag)
 
@@ -145,6 +140,17 @@ def process_images(
             img["src"] = img["src"].replace("{page}", page_name)
         if "alt" in img.attrs and "{page}" in img["alt"]:
             img["alt"] = img["alt"].replace("{page}", page_name)
+
+
+def process_body(
+    soup,
+    page_name,
+):
+
+    for body in soup.find_all("body"):
+        # replace {page} in body class attribute
+        if "class" in body.attrs:
+            body["class"] = [cls.replace("{page}", page_name) for cls in body["class"]]
 
 
 def process_spans(
@@ -225,7 +231,7 @@ def generate_element(
 
     add_class(
         element=container_div,
-        class_name=f"containter_{element_type}_{page_name}",
+        class_name=f"container_{element_type}_{page_name}",
     )
 
     # Find the content div within the container
@@ -239,7 +245,7 @@ def generate_element(
     element_folder = page_folder / element_type
 
     add_class(
-        element=container_div,
+        element=content_div,
         class_name=f"content_{element_type}_{page_name}",
     )
 
@@ -377,7 +383,12 @@ def generate_page(
         page_name=page_name,
     )
 
-    for element_type in ["large", "top", "middle", "bottom"]:
+    process_body(
+        soup=template_soup,
+        page_name=page_name,
+    )
+
+    for element_type in ["large", "top", "middle", "bottom", "bottom_anchor"]:
 
         generate_element(
             page_folder=page_folder,
