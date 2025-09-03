@@ -32,11 +32,22 @@ html, body {
     background-color: rgb(0, 0, 0);
 }
 
+.body_about {
+    background-color: rgb(0, 0, 0);
+}
+
 a {
     color: rgb(170, 170, 170); 
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
+.website-credits {
+  font-size: 1.5rem;
+  text-align: right;
+  padding-right: 2rem;
+}
+
 
 a.large-hover {
   position: relative; /* This is crucial */
@@ -47,8 +58,8 @@ a.large-hover:hover {
   color: rgb(140, 140, 140) 
 }
 
-a:hover {
-    color: rgb(255, 209, 68); 
+a.about:hover {
+    color: rgb(255, 209, 68) !important;
 }
 
 a.commissions:hover {
