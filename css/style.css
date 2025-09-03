@@ -217,6 +217,7 @@ nav {
     line-height: 1.4; /* relative to the font size */
     text-align: left;
     padding-top: 0.5em;
+    padding-left: 2.0rem;
 }
 
 #content_top {
@@ -279,6 +280,7 @@ nav {
 
 #container_large {
   flex: 1; /* Takes up remaining space */
+  padding: 0;
 }
 
 #container_bottom {
