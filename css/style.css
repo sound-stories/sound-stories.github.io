@@ -88,6 +88,20 @@ nav {
     margin-bottom: 0;
 }
 
+.navbar {
+    background-color: #000000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center; /* keeps logo and button vertically aligned */
+  padding-top: 1rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-bottom: 1rem;
+}
+
+
 #navbar-logo {
     display: block;  
     /* Responsive logo width:
@@ -98,17 +112,19 @@ nav {
     /*width: clamp(120px, 20vw, 300px);*/
     width: 250px;
     height: auto; /* Maintain aspect ratio */ 
-    padding-left: 6px;
+    margin-left: 2rem;
     z-index: 100000; /* Ensure it stays above other elements */
+}
+
+#navbar-button {
+    margin-left: auto; /* pushes it to the right */
+    margin-right: 1.0rem;
 }
 
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-.navbar {
-    background-color: #000000;
-}
 
 #mainMenu {
     background-color: #000000;
@@ -210,6 +226,13 @@ nav {
     font-weight: 300;
     text-align: left;
     width: 50%;
+    padding-left: 2.0rem;
+}
+
+#container_top{
+  width: 100%;
+  background-color: #000000;
+  padding-bottom: 0.0rem;
 }
 
 #container_top img.smallTop {
@@ -225,9 +248,10 @@ nav {
 
 #content_middle {
     text-align: right;
-    padding: 1.5rem 1.5rem 0rem 0rem;
-    margin: 0rem 0rem 3rem 0rem;
+    padding: 2.5rem 2.5rem 0rem 0rem;
+    margin: 0rem 0rem 0rem 0rem;
 }
+
 
 .content_middle_commissions video {
   width: 55%;
