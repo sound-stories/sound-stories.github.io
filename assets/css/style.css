@@ -86,19 +86,6 @@ a.contact:hover {
     color: #5691a4  !important;
 }
 
-
-footer {
-    background: #02020f;
-    color: #ffffff;
-    text-align: center;
-    display: flex;
-    align-items: center;    /* vertical alignment */
-    justify-content: center; /* horizontal centering */
-    padding: 0;
-    margin: 0;
-    font-size: 0.9rem;
-}
-
 nav {
     margin-bottom: 0;
 }
@@ -235,6 +222,15 @@ nav {
     padding-left: 2.0rem;
 }
 
+#content_large_split {
+    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
+    font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
+    line-height: 1.4; /* relative to the font size */
+    text-align: left;
+    padding-top: 0.5em;
+    padding-left: 2.0rem;
+}
+
 #content_top {
     background-color: #000000;
     color: #ffffff;
@@ -269,60 +265,55 @@ nav {
 }
 
 
-.content_middle_commissions video {
-  width: 55%;
-  height: auto;
-  max-width: 55%;
+
+#container_large {
+  flex: 1; /* Takes up remaining space */
+  padding: 0;
 }
 
-.content_middle_podcasts video {
-  width: 30%;
-  height: auto;
-  max-width: 60%;
-}
+/* Split layout styles */
 
-.content_middle_songs video {
-  width: 60%;
-  height: auto;
-  max-width: 60%;
-}
-
-.content_middle_studio_facilities video {
+#container_split {
+  display: flex;
   width: 100%;
-  height: auto;
-  max-width: 100%;
+  padding: 2rem;
+}
+
+#content_split {
+  flex: 1;               /* takes up remaining space */
+  font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
+  font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
+  line-height: 1.4; /* relative to the font size */
+  text-align: left;
+}
+
+#animation_split {
+  display: flex;
 }
 
 
-.content_middle_commissions img {
+.container_split_commissions img {
   width: 800px;
   height: auto;
   max-width: 100%;
 }
 
-.content_middle_podcasts img {
+.container_split_podcasts img {
   width: 600px;
   height: auto;
   max-width: 100%;
 }
 
-.content_middle_songs img {
+.container_split_songs img {
   width: 800px;
   height: auto;
   max-width: 100%;
-  padding-bottom: 2rem;
 }
 
-.content_middle_studio_facilities img {
+.container_split_facilities img {
   width: 800px;
   height: auto;
   max-width: 100%;
-  padding-bottom: 2rem;
-}
-
-#container_large {
-  flex: 1; /* Takes up remaining space */
-  padding: 0;
 }
 
 #container_bottom {

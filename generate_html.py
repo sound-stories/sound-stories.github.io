@@ -161,7 +161,13 @@ def process_spans(
     for span in soup.find_all("span"):
         # check if span text contain {page}
         if span.string and "{page}" in span.string:
-            page_name = page_name[0].upper() + page_name[1:]
+
+            data = page_name.split("_")
+
+            data = [word.capitalize() for word in data]
+
+            page_name = " ".join(data)
+
             span.string = span.string.replace("{page}", page_name)
 
 
@@ -388,7 +394,7 @@ def generate_page(
         page_name=page_name,
     )
 
-    for element_type in ["large", "top", "middle", "bottom", "bottom_anchor"]:
+    for element_type in ["large", "split", "top", "middle", "bottom", "bottom_anchor"]:
 
         generate_element(
             page_folder=page_folder,
