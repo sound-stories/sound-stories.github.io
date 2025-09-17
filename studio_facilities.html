@@ -36,34 +36,30 @@
 <div class="row g-0 align-items-center flex-column flex-md-row">
 <!-- Image for small screens (centered on top) -->
 <div class="col-12 d-block d-md-none text-center mb-3 title">
-<span>Studio_facilities</span>
+<span>Studio Facilities</span>
 </div>
 <!-- Text content: full width on small, 50% on md+ -->
-<div class="col-12 col-md-6 text-center text-md-start mb-3 mb-md-0 content_top_studio_facilities" id="content_top">The SoundStories studio is a 16m2, professional but homely recording space, equipped with everything you need to record a podcast or track an album, including live drums. Please see below for a full list of instruments and equipment.  
-
-<a href="#equipment">[View Equipment →]</a></div>
+<div class="col-12 col-md-6 text-center text-md-start mb-3 mb-md-0 content_top_studio_facilities" id="content_top">The SoundStories studio is a 16m2, professional but homely recording space, equipped with everything you need to record a podcast or track an album, including live drums. Please see below for a full list of instruments and equipment.  </div>
 <!-- Image for large screens (right side) -->
 <div class="col-12 col-md-6 d-none d-md-flex title titleRight justify-content-md-end">
-<span>Studio_facilities</span>
+<span>Studio facilities</span>
 </div>
 </div>
 </div>
 <!-- Page Content -->
-
-<div class="container_middle_studio_facilities" id="container_middle">
-<div class="content_middle_studio_facilities" id="content_middle">
-<img alt="Drum Machine, Rig, and Piano" src="img/animations/studio_facilities.gif"/>
-<!--
-<video autoplay muted loop playsinline disablePictureInPicture>
-  <source src="img/animations/studio_facilities.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-!--></div>
-</div>
-
-<div class="container-fluid m-0 p-0 container_bottom_studio_facilities" id="container_bottom">
-<div id="menu_bottom"><div class="nav-sub-item"><a data-target="gear">Gear</a><img alt="hand-drawn divider" class="hand-drawn-line-sub-menu" src="img/black_lines/line1.svg"/></div><div class="nav-sub-item"><a data-target="instruments">Instruments</a><img alt="hand-drawn divider" class="hand-drawn-line-sub-menu" src="img/black_lines/line2.svg"/></div><div class="nav-sub-item"><a data-target="mics">Mics</a></div></div>
-<div class="content_bottom_studio_facilities" id="content_bottom"><div class="sub-content" id="gear">Neumann KH150 speakers<br/>
+<div class="container_split_studio_facilities" id="container_split">
+<div class="content_split_studio_facilities" id="content_split">
+<p>
+<a class="studio-facilities" href="#">Gear →</a>
+</p>
+<p>
+<a class="studio-facilities" href="#">Instruments →</a>
+</p>
+<p>
+<a class="studio-facilities" href="#">Mics →</a>
+</p>
+<div id="gear_popup" style="display:none;">
+Neumann KH150 speakers<br/>
 RME UFX III interface<br/>
 Focusrite ISA 428 (with digital expansion card)<br/>
 D.A.V. Electronics Broadhurst Gardens No. 1U<br/>
@@ -73,7 +69,46 @@ Rupert Neve Designs RNDI<br/>
 Radial JCR Studio ReAmper<br/>
 Ampeg SVT-3 Pro Bass head<br/>
 Fender Rumble 115 bass cabinet<br/>
-Fender Princeton Reverb Amp<br/></div><div class="sub-content" id="instruments">Yamaha Recording Custom Rock 3 Piece Kit (Surf Green) with Remo Ambassador and Emporer drum heads.<br/>
+Fender Princeton Reverb Amp<br/>
+</div>
+<div id="instruments_popup" style="display:none;">
+Yamaha Recording Custom Rock 3 Piece Kit (Surf Green) with Remo Ambassador and Emporer drum heads.<br/>
+Ludwig Black Beauty 6” snare<br/>
+Cymbals<br/>
+Taylor GS Mini acoustic<br/>
+John Broadwood &amp; Sons upright piano<br/>
+Vintage Wurlitzer stage piano<br/>
+Vintage Fender Rhodes Piano Bass<br/>
+Sequential Instruments Prophet-5<br/>
+Elektron Analog Rytm MkII<br/>
+Korg ARP 2600 M<br/>
+Glockenspiel<br/>
+</div>
+<div id="mics_popup" style="display:none;">
+Coles 4038<br/>
+Telefunken Copperhead<br/>
+Austrian Audio OC 818 (pair)<br/>
+Austrian Audio OC 18 (pair)<br/>
+AMT M40 Piano PZM<br/>
+Shure SM58 (Beta)<br/>
+Shure SM57<br/>
+Sennheiser e609<br/>
+Sennheiser e602II<br/>
+Audiotechnica ATM25<br/>
+Audiotechnica AT4033<br/>
+Beyedynamic M260.80 (pair)<br/>
+</div></div>
+<div id="animation_split">
+<img alt="studio_facilities animation" src="img/animations/studio_facilities.gif"/>
+</div>
+</div>
+<!-- Page Content -->
+
+
+
+<div class="container-fluid m-0 p-0 container_bottom_studio_facilities" id="container_bottom">
+<div id="menu_bottom"><div class="nav-sub-item"><a data-target="gear">Gear</a><img alt="hand-drawn divider" class="hand-drawn-line-sub-menu" src="img/black_lines/line1.svg"/></div><div class="nav-sub-item"><a data-target="instruments">Instruments</a><img alt="hand-drawn divider" class="hand-drawn-line-sub-menu" src="img/black_lines/line2.svg"/></div><div class="nav-sub-item"><a data-target="mics">Mics</a></div></div>
+<div class="content_bottom_studio_facilities" id="content_bottom"><div class="sub-content" id="gear"></div><div class="sub-content" id="instruments">Yamaha Recording Custom Rock 3 Piece Kit (Surf Green) with Remo Ambassador and Emporer drum heads.<br/>
 Ludwig Black Beauty 6” snare<br/>
 Cymbals<br/>
 Taylor GS Mini acoustic<br/>
