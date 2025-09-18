@@ -55,5 +55,25 @@ Animations by <a class="about" href="https://www.instagram.com/artbypeterwood" t
 Code       by <span class="about">Peter Stuart</span><br/>
 </p></div>
 </div>
+<script>
+
+  /*ensure modals with iframes reset (stop video) when closed*/
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Find any modal div with id ending in "popup" or "PopUp", etc.
+    const modals = document.querySelectorAll('div[id$="popup" i]');
+
+    modals.forEach(modal => {
+      modal.addEventListener('hidden.bs.modal', () => {
+        // Reset all iframes inside this modal
+        modal.querySelectorAll('iframe').forEach(iframe => {
+          const src = iframe.getAttribute('src');
+          if (src) iframe.setAttribute('src', src); // reloads iframe → stops video
+        });
+      });
+    });
+  });
+  
+</script>
 </body>
 </html>

@@ -9,7 +9,7 @@
        url('../fonts/MERKPIX-Bold.ttf') format('truetype');/* Legacy fallback */
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -21,7 +21,7 @@
        url('../fonts/silt-rough.ttf') format('truetype');/* Legacy fallback */
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* body styles */
@@ -326,34 +326,55 @@ nav {
 }
 
 /* Pop-up styles */
+ /* Reusable modal (native <dialog>) */
+  dialog.modal {
+    width: min(800px, 90vw);
+    max-height: 85vh;
+    padding: 1rem 1.25rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    background: #fff;
+  }
+  dialog.modal::backdrop {
+    background: rgba(0,0,0,.5);
+  }
 
-.pop-up {
-    display:none; 
-    position:fixed;
-    top:10%; 
-    left:10%; 
-    width:80%;
-    height:85%; 
-    background:white; 
-    z-index:1000; 
-    padding:1rem;
-}
-
-.pop-up a{
+  /* Close “X” */
+  .modal-close {
     position: absolute;
     top: 10px;
-    right: 10px;
-    color: #000000; 
+    right: 12px;
     font-size: 1.5rem;
+    line-height: 1;
+    color: #000;
     text-decoration: none;
-}
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .modal-close:hover,
+  .modal-close:focus {
+    color: rgb(255, 209, 68);
+    outline: none;
+  }
 
-.pop-up a:hover {
-    color: rgb(255, 209, 68); 
-    cursor: hand;
-}
+  /* Trigger links (styled as simple buttons/links) */
+  .popup-trigger {
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 
-/* website credits styles */
+  /* Keep your source content hidden but present in the DOM */
+  .popup-source[hidden] { display: none !important; }
+
+  /* website credits styles */
 
 .website-credits {
   font-size: 1.5rem;

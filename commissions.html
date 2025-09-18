@@ -46,16 +46,43 @@
 </div>
 <div class="container_split_commissions" id="container_split">
 <div class="content_split_commissions" id="content_split">
+<!--
 <p>
-<a class="commissions" href="https://www.youtube.com/embed/b8gGRL3n-hU?si=hiNKjTN9abqlFBpu" target="_blank">&gt; Contact Protocol</a>
+<a href="https://www.youtube.com/embed/b8gGRL3n-hU?si=hiNKjTN9abqlFBpu" target="_blank" class="commissions">> Contact Protocol</a>
 </p>
+-->
+<!--
 <p>
-<a class="commissions" href="https://player.vimeo.com/video/962526686?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" target="_blank">&gt; Reshaped</a>
-</p></div>
+<a href="https://player.vimeo.com/video/962526686?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" target="_blank" class="commissions">> Reshaped</a>  
+</p>
+-->
+<p><a class="commissions" data-bs-target="#contact_protocolPopUp" data-bs-toggle="modal" href="#">&gt; Contact Protocol</a></p>
+<p><a class="commissions" data-bs-target="#reshapedPopUp" data-bs-toggle="modal" href="#">&gt; Reshaped</a></p>
+</div>
 <div id="animation_split">
 <img alt="commissions animation" src="img/animations/commissions.gif"/>
 </div>
 </div>
 
-</body>
+<script>
+
+  /*ensure modals with iframes reset (stop video) when closed*/
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Find any modal div with id ending in "popup" or "PopUp", etc.
+    const modals = document.querySelectorAll('div[id$="popup" i]');
+
+    modals.forEach(modal => {
+      modal.addEventListener('hidden.bs.modal', () => {
+        // Reset all iframes inside this modal
+        modal.querySelectorAll('iframe').forEach(iframe => {
+          const src = iframe.getAttribute('src');
+          if (src) iframe.setAttribute('src', src); // reloads iframe → stops video
+        });
+      });
+    });
+  });
+  
+</script>
+<div class="modal fade" id="contact_protocolPopUp"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Contact Protocol</h5><a aria-label="Close" data-bs-dismiss="modal" href="#">X</a></div><div class="modal-body"><iframe allowfullscreen="" frameborder="0" height="300" src="https://www.youtube.com/embed/b8gGRL3n-hU?si=hiNKjTN9abqlFBpu" width="480"></iframe></div></div></div></div><div class="modal fade" id="reshapedPopUp"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Reshaped</h5><a aria-label="Close" data-bs-dismiss="modal" href="#">X</a></div><div class="modal-body"><iframe allowfullscreen="" frameborder="0" height="300" src="https://player.vimeo.com/video/962526686?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="480"></iframe></div></div></div></div></body>
 </html>

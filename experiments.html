@@ -48,5 +48,25 @@
 <div class="container-fluid container_large_experiments" id="container_large">
 <div class="content_large_experiments" id="content_large"><a class="experiments" href="https://www.instagram.com/soundstories.music" target="_blank">View Experiments on Instagram →</a></div>
 </div>
+<script>
+
+  /*ensure modals with iframes reset (stop video) when closed*/
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Find any modal div with id ending in "popup" or "PopUp", etc.
+    const modals = document.querySelectorAll('div[id$="popup" i]');
+
+    modals.forEach(modal => {
+      modal.addEventListener('hidden.bs.modal', () => {
+        // Reset all iframes inside this modal
+        modal.querySelectorAll('iframe').forEach(iframe => {
+          const src = iframe.getAttribute('src');
+          if (src) iframe.setAttribute('src', src); // reloads iframe → stops video
+        });
+      });
+    });
+  });
+  
+</script>
 </body>
 </html>

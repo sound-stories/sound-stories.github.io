@@ -45,18 +45,36 @@
 </div>
 </div>
 <div class="container_split_studio_facilities" id="container_split">
-<div class="content_split_studio_facilities" id="content_split">
-<p>
-<a class="studio-facilities" href="#">&gt; Gear</a>
-</p>
-<p>
-<a class="studio-facilities" href="#">&gt; Instruments</a>
-</p>
-<p>
-<a class="studio-facilities" href="#">&gt; Mics</a>
-</p>
-<div id="gear_popup" style="display:none;">
-Neumann KH150 speakers<br/>
+<div class="content_split_studio_facilities" id="content_split"><p><a class="studio-facilities" data-bs-target="#gearPopUp" data-bs-toggle="modal" href="#">&gt; Gear</a></p>
+<p><a class="studio-facilities" data-bs-target="#instrumentsPopUp" data-bs-toggle="modal" href="#">&gt; Instruments</a></p>
+<p><a class="studio-facilities" data-bs-target="#micsPopUp" data-bs-toggle="modal" href="#">&gt; Mics</a></p>
+</div>
+<div id="animation_split">
+<img alt="studio_facilities animation" src="img/animations/studio_facilities.gif"/>
+</div>
+</div>
+
+<script>
+
+  /*ensure modals with iframes reset (stop video) when closed*/
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Find any modal div with id ending in "popup" or "PopUp", etc.
+    const modals = document.querySelectorAll('div[id$="popup" i]');
+
+    modals.forEach(modal => {
+      modal.addEventListener('hidden.bs.modal', () => {
+        // Reset all iframes inside this modal
+        modal.querySelectorAll('iframe').forEach(iframe => {
+          const src = iframe.getAttribute('src');
+          if (src) iframe.setAttribute('src', src); // reloads iframe → stops video
+        });
+      });
+    });
+  });
+  
+</script>
+<div class="modal fade" id="gearPopUp"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Gear</h5><a aria-label="Close" data-bs-dismiss="modal" href="#">X</a></div><div class="modal-body">Neumann KH150 speakers<br/>
 RME UFX III interface<br/>
 Focusrite ISA 428 (with digital expansion card)<br/>
 D.A.V. Electronics Broadhurst Gardens No. 1U<br/>
@@ -66,10 +84,7 @@ Rupert Neve Designs RNDI<br/>
 Radial JCR Studio ReAmper<br/>
 Ampeg SVT-3 Pro Bass head<br/>
 Fender Rumble 115 bass cabinet<br/>
-Fender Princeton Reverb Amp<br/>
-</div>
-<div id="instruments_popup" style="display:none;">
-Yamaha Recording Custom Rock 3 Piece Kit (Surf Green) with Remo Ambassador and Emporer drum heads.<br/>
+Fender Princeton Reverb Amp<br/></div></div></div></div><div class="modal fade" id="instrumentsPopUp"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Instruments</h5><a aria-label="Close" data-bs-dismiss="modal" href="#">X</a></div><div class="modal-body">Yamaha Recording Custom Rock 3 Piece Kit (Surf Green) with Remo Ambassador and Emporer drum heads.<br/>
 Ludwig Black Beauty 6” snare<br/>
 Cymbals<br/>
 Taylor GS Mini acoustic<br/>
@@ -79,10 +94,7 @@ Vintage Fender Rhodes Piano Bass<br/>
 Sequential Instruments Prophet-5<br/>
 Elektron Analog Rytm MkII<br/>
 Korg ARP 2600 M<br/>
-Glockenspiel<br/>
-</div>
-<div id="mics_popup" style="display:none;">
-Coles 4038<br/>
+Glockenspiel<br/></div></div></div></div><div class="modal fade" id="micsPopUp"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Mics</h5><a aria-label="Close" data-bs-dismiss="modal" href="#">X</a></div><div class="modal-body">Coles 4038<br/>
 Telefunken Copperhead<br/>
 Austrian Audio OC 818 (pair)<br/>
 Austrian Audio OC 18 (pair)<br/>
@@ -93,12 +105,5 @@ Sennheiser e609<br/>
 Sennheiser e602II<br/>
 Audiotechnica ATM25<br/>
 Audiotechnica AT4033<br/>
-Beyedynamic M260.80 (pair)<br/>
-</div></div>
-<div id="animation_split">
-<img alt="studio_facilities animation" src="img/animations/studio_facilities.gif"/>
-</div>
-</div>
-
-</body>
+Beyedynamic M260.80 (pair)<br/></div></div></div></div></body>
 </html>
