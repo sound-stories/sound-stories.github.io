@@ -12,6 +12,20 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'silt-rough';
+  src: url('../fonts/silt-rough.eot'); /* IE8 */
+  src: url('../fonts/silt-rough.eot?#iefix') format('embedded-opentype'), /* IE9+ */
+       url('../fonts/silt-rough.woff2') format('woff2'), /* Modern */
+       url('../fonts/silt-rough.woff') format('woff'),   /* Older modern */
+       url('../fonts/silt-rough.ttf') format('truetype');/* Legacy fallback */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* body styles */
+
 html, body {
     margin: 0;
     padding: 0;
@@ -52,26 +66,13 @@ html, body {
     background-color: rgb(0, 0, 0);
 }
 
+
+/* link styles */
+
 a {
     color: rgb(170, 170, 170); 
     text-decoration: none;
     transition: color 0.3s ease;
-}
-
-.website-credits {
-  font-size: 1.5rem;
-  text-align: right;
-  padding-right: 2rem;
-}
-
-
-a.large-hover {
-  position: relative; /* This is crucial */
-  display: inline-block; /* Helps with layout */
-}
-
-a.large-hover:hover {
-  color: rgb(140, 140, 140) 
 }
 
 a.about:hover {
@@ -102,6 +103,8 @@ a.contact:hover {
     color: #5691a4  !important;
 }
 
+/* Navbar styles */
+
 nav {
     margin-bottom: 0;
 }
@@ -122,12 +125,6 @@ nav {
 
 #navbar-logo {
     display: block;  
-    /* Responsive logo width:
-       - Minimum: 120px
-       - Preferred: 20% of viewport width
-       - Maximum: 300px
-       Ensures the logo scales fluidly but stays within reasonable bounds */
-    /*width: clamp(120px, 20vw, 300px);*/
     width: 250px;
     height: auto; /* Maintain aspect ratio */ 
     margin-left: 2rem;
@@ -159,11 +156,7 @@ nav {
 #mainMenu a {
     color: #ffffff;
 }
-/*
-#mainMenu a:hover {
-    color: rgb(255, 209, 68); 
-}
-*/
+
 .btn-close.close-white {
   filter: none !important; /* Disable Bootstrap's greyscale/invert filter */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 1 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
@@ -216,36 +209,7 @@ nav {
   margin-left: auto;
 }
 
-.title{
-  font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
-  font-weight: 300; /* thinner weight */
-  letter-spacing: 0.1em;
-  font-size: 2.5rem;
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.titleRight {
-  padding-right: 2.0rem;
-}
-
-#content_large {
-    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
-    font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
-    line-height: 1.4; /* relative to the font size */
-    text-align: left;
-    padding-top: 0.5em;
-    padding-left: 2.0rem;
-}
-
-#content_large_split {
-    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
-    font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
-    line-height: 1.4; /* relative to the font size */
-    text-align: left;
-    padding-top: 0.5em;
-    padding-left: 2.0rem;
-}
+/* Top layout styles */
 
 #content_top {
     background-color: #000000;
@@ -274,12 +238,37 @@ nav {
     height: 70px;
 }
 
+.title{
+  font-family: 'silt-rough', 'Courier New', Courier, monospace;
+  font-weight: 300; /* thinner weight */
+  letter-spacing: 0.1em;
+  font-size: 2.5rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.titleRight {
+  padding-right: 2.0rem;
+}
+
+/* Middle layout styles */
+
 #content_middle {
     text-align: right;
     padding: 2.5rem 2.5rem 0rem 0rem;
     margin: 0rem 0rem 0rem 0rem;
 }
 
+/* Large layout styles */
+
+#content_large {
+    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
+    font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
+    line-height: 1.4; /* relative to the font size */
+    text-align: left;
+    padding-top: 0.5em;
+    padding-left: 2.0rem;
+}
 
 
 #container_large {
@@ -298,18 +287,22 @@ nav {
 #content_split {
   flex: 1;               /* takes up remaining space */
   font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
-  font-size: clamp(16px, calc(2.5vw + 2.5vh), 70px);
+  font-size: 2rem;
   line-height: 1.4; /* relative to the font size */
   text-align: left;
 }
+
+#content_split a {
+  color: rgb(48, 48, 48);
+}
+
 
 #animation_split {
   display: flex;
 }
 
-
 .container_split_commissions img {
-  width: 800px;
+  width: 600px;
   height: auto;
   max-width: 100%;
 }
@@ -332,104 +325,7 @@ nav {
   max-width: 100%;
 }
 
-#container_bottom {
-  text-align: right;
-}
-
-.container_bottom_commissions {
-    background-color: #97a058 !important; 
-}
-
-.content_bottom_commissions {
-    background-color: #97a058 !important; 
-}
-
-.container_bottom_podcasts {
-    background-color: rgb(54, 108, 174) !important; 
-}
-
-.container_bottom_songs {
-    background-color: rgb(163, 98, 67) !important; 
-}
-
-.container_bottom_studio_facilities {
-  background-color: #995b66 !important;
-}
-
-#container_bottom a {
-    color: #000000;
-    font-size: 2.0rem;
-    padding-left: 1rem;
-}
-
-#container_bottom_anchor{
-    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
-    color: #000000;
-    font-size: 1.0rem;
-    font-weight: bold;
-    padding-left: 2rem !important;
-    margin-left: 0rem !important;
-    padding-bottom: 0.5rem;
-}
-
-#container_bottom a:hover {
-    color: #ffffff; 
-}
-
-#content_bottom {
-  flex: 1; /* Takes up remaining space */
-  padding: 1rem;
-  color: #ffffff;
-}
-
-.sub-content{
-  display: none;
-}
-
-#sub-content-instructions {
-  display: block;
-}
-
-.sub-content iframe {
-  width: 100%;
-  height: 300px;
-  border: none;
-}
-
-#menu_bottom {
-  width: 400px;
-  padding: 1rem;
-  display: inline-block;
-  font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace;
-  font-weight: 300; /* thinner weight */
-  letter-spacing: 0.2em;
-  font-size: 1.5rem;
-  text-decoration: none;
-  margin-bottom: 0;
-  padding: 0 2rem 0 0;  
-  text-align: right !important;
-}
-
-#menu_bottom a {
-    color: #000000;
-    /*set pointer to hand*/
-    cursor: pointer;
-}
-
-.nav-sub-item {
-    display: inline-block;
-    font-size: 2.0rem;
-    margin-bottom: 0.5rem;
-    margin-right: 0.5rem;
-    padding-right: 0.5rem;
-}
-
-.hand-drawn-line-sub-menu {
-  width: 100%;
-  max-width: 100%;
-  display: block;
-  margin-left: auto;
-}
+/* Pop-up styles */
 
 .pop-up {
     display:none; 
@@ -457,3 +353,10 @@ nav {
     cursor: hand;
 }
 
+/* website credits styles */
+
+.website-credits {
+  font-size: 1.5rem;
+  text-align: right;
+  padding-right: 2rem;
+}

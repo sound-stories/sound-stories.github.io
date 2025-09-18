@@ -23,11 +23,9 @@
 </a>
 </div>
 </nav>
-<!-- Offcanvas Menu -->
+<!-- Popup Menu -->
 <div aria-labelledby="mainMenuLabel" class="offcanvas offcanvas-end" id="mainMenu" tabindex="-1">
 <div class="offcanvas-body">
-<!-- Close Button -->
-<!--      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">X</button><br>-->
 <button aria-label="Close" class="btn-close close-white" data-bs-dismiss="offcanvas" type="button"></button>
 <div id="navItems"><div class="nav-item mb-2"><a class="commissions" href="commissions.html">Commissions</a><img alt="hand-drawn divider" class="hand-drawn-line-menu" src="img/white_lines/line1.svg"/></div><div class="nav-item mb-2"><a class="podcasts" href="podcasts.html">Podcasts</a><img alt="hand-drawn divider" class="hand-drawn-line-menu" src="img/white_lines/line2.svg"/></div><div class="nav-item mb-2"><a class="songs" href="songs.html">Songs</a><img alt="hand-drawn divider" class="hand-drawn-line-menu" src="img/white_lines/line3.svg"/></div><div class="nav-item mb-2"><a class="studio-facilities" href="studio_facilities.html">Studio Facilities</a><img alt="hand-drawn divider" class="hand-drawn-line-menu" src="img/white_lines/line4.svg"/></div><div class="nav-item mb-2"><a class="experiments" href="experiments.html">Experiments</a><img alt="hand-drawn divider" class="hand-drawn-line-menu" src="img/white_lines/line5.svg"/></div><div class="nav-item mb-2"><a class="contact" href="contact.html">Contact</a><img alt="hand-drawn divider" class="hand-drawn-line-menu" src="img/white_lines/line1.svg"/></div><div class="nav-item mb-2"><a class="about" href="about.html">About</a></div></div>
 </div>
@@ -47,51 +45,12 @@ We love writing songs to a brief, so please <a class="contact" href="contact.htm
 </div>
 </div>
 </div>
-<!-- Page Content -->
 <div class="container_split_songs" id="container_split">
 <div class="content_split_songs" id="content_split"><a class="songs" href="https://open.spotify.com/playlist/28tZOYYIc8yRnWVcN1FPBY?si=Qkutn0b3QduUUu-4tZIN2Q" target="_blank">Open playlist on Spotify →</a></div>
 <div id="animation_split">
 <img alt="songs animation" src="img/animations/songs.gif"/>
 </div>
 </div>
-<!-- Page Content -->
 
-
-
-
-<!--
-  <footer>&copy; 2025 Sound Stories</footer>
--->
-<script>
-
-  document.querySelectorAll('#menu_bottom a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('data-target');
-      
-      // Hide all sections
-      const subContentInstructions = document.getElementById("sub-content-instructions");
-      
-      if (subContentInstructions) {
-        subContentInstructions.style.display = 'none';
-      }
-
-      document.querySelectorAll('#content_bottom .sub-content').forEach(section => {
-        section.style.display = 'none';
-      });
-
-      // Show the target section
-      const targetSection = document.getElementById(targetId);
-      
-      if (targetSection) {
-        targetSection.style.display = 'block';
-      }
-
-    });
-  });
-
-</script>
 </body>
 </html>
