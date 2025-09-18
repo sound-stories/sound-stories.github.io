@@ -31,6 +31,58 @@ def process_element_file(
     content_div.append(content)
 
 
+def process_popups(
+    template_soup,
+    popup_folder,
+):
+
+    for file in sorted(popup_folder.glob("*.html")):
+
+        name = file.stem
+
+        print(f"  Adding popup: {name}")
+
+        popup_div = template_soup.new_tag("div")
+
+        popup_div["class"] = "modal fade"
+        popup_div["id"] = f"{name}PopUp"
+
+        template_soup.body.append(popup_div)
+
+        dialog_div = template_soup.new_tag("div")
+        dialog_div["class"] = "modal-dialog"
+        popup_div.append(dialog_div)
+
+        content_div = template_soup.new_tag("div")
+        content_div["class"] = "modal-content"
+        dialog_div.append(content_div)
+
+        header_div = template_soup.new_tag("div")
+        header_div["class"] = "modal-header"
+        content_div.append(header_div)
+
+        title_h5 = template_soup.new_tag("h5")
+        title_h5["class"] = "modal-title"
+        title_h5.string = make_title(name)
+        header_div.append(title_h5)
+
+        close_a = template_soup.new_tag("a")
+        close_a["href"] = "#"
+        close_a["data-bs-dismiss"] = "modal"
+        close_a["aria-label"] = "Close"
+        close_a.string = "X"
+        header_div.append(close_a)
+
+        body_div = template_soup.new_tag("div")
+        body_div["class"] = "modal-body"
+        content_div.append(body_div)
+
+        process_element_file(
+            body_div,
+            element_file=popup_folder / f"{name}.html",
+        )
+
+
 def add_class(
     element,
     class_name,
@@ -161,7 +213,6 @@ def generate_element(
     page_name,
     element_type,
     template_soup,
-    lines,
 ):
 
     container_id = f"container_{element_type}"
@@ -183,7 +234,6 @@ def generate_element(
         container_div.decompose()
 
     element_file = page_folder / f"{element_type}.html"
-    element_folder = page_folder / element_type
 
     add_class(
         element=content_div,
@@ -282,7 +332,6 @@ def generate_page(
     template_path,
     page_names,
     white_lines,
-    black_lines,
 ):
 
     page_name = get_page_name(page_folder)
@@ -322,7 +371,14 @@ def generate_page(
             page_name=page_name,
             element_type=element_type,
             template_soup=template_soup,
-            lines=black_lines,
+        )
+
+    popup_folder = page_folder / "popups"
+
+    if popup_folder.exists() and popup_folder.is_dir():
+        process_popups(
+            template_soup=template_soup,
+            popup_folder=popup_folder,
         )
 
     output_file = get_output_file(
@@ -359,7 +415,6 @@ def generate_website(
     output_dir,
     template_path,
     white_lines,
-    black_lines,
 ):
 
     content_path = Path(content_dir)
@@ -376,7 +431,6 @@ def generate_website(
                 template_path=template_path,
                 page_names=page_names,
                 white_lines=white_lines,
-                black_lines=black_lines,
             )
 
 
@@ -399,11 +453,6 @@ if __name__ == "__main__":
         lines_dir="white_lines",
     )
 
-    black_lines = get_lines(
-        img_dir=Path(output_dir) / "img",
-        lines_dir="black_lines",
-    )
-
     copy_cname(
         output_dir=output_dir,
     )
@@ -413,5 +462,4 @@ if __name__ == "__main__":
         output_dir=output_dir,
         template_path="template.html",
         white_lines=white_lines,
-        black_lines=black_lines,
     )
