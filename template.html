@@ -31,13 +31,11 @@
    
   </nav>
 
-  <!-- Offcanvas Menu -->
+  <!-- Popup Menu -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="mainMenu" aria-labelledby="mainMenuLabel">
 
     <div class="offcanvas-body">
 
-      <!-- Close Button -->
-<!--      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">X</button><br>-->
       <button type="button" class="btn-close close-white" aria-label="Close" data-bs-dismiss="offcanvas" ></button>
 
       <div id="navItems">      
@@ -67,8 +65,6 @@
   </div>
 </div>
 
-
-<!-- Page Content -->
 <div id="container_split">
 
   <div id="content_split"></div>
@@ -79,74 +75,12 @@
 
 </div>
 
-<!-- Page Content -->
 <div id="container_large" class="container-fluid">
 
   <div  id="content_large">
   </div>
 
 </div>
-
-  <div id="container_middle">
-
-    <div id="content_middle">
-    </div>
-
-  </div>
-
-  <div id="container_bottom_anchor">
-
-    <div id="content_bottom_anchor">
-    </div>
-
-  </div>
-
-
-  <div id="container_bottom" class="container-fluid m-0 p-0">
-            
-    <div id="menu_bottom">
-    </div>
-
-    <div id="content_bottom">
-    </div>
-
-  </div>
-
-<!--
-  <footer>&copy; 2025 Sound Stories</footer>
--->
-
-<script>
-
-  document.querySelectorAll('#menu_bottom a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('data-target');
-      
-      // Hide all sections
-      const subContentInstructions = document.getElementById("sub-content-instructions");
-      
-      if (subContentInstructions) {
-        subContentInstructions.style.display = 'none';
-      }
-
-      document.querySelectorAll('#content_bottom .sub-content').forEach(section => {
-        section.style.display = 'none';
-      });
-
-      // Show the target section
-      const targetSection = document.getElementById(targetId);
-      
-      if (targetSection) {
-        targetSection.style.display = 'block';
-      }
-
-    });
-  });
-
-</script>
 
 </body>
 </html>

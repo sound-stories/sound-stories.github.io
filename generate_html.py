@@ -31,67 +31,6 @@ def process_element_file(
     content_div.append(content)
 
 
-def process_element_folder(
-    template_soup,
-    content_div,
-    menu_div,
-    element_folder,
-    lines,
-):
-
-    content_div.clear()
-    names = []
-
-    for file in sorted(element_folder.glob("*.html")):
-
-        name = file.stem
-
-        sub_div = template_soup.new_tag("div")
-        sub_div["class"] = "sub-content"
-        sub_div["id"] = name
-
-        content_div.append(sub_div)
-
-        content = get_content(html_file=file)
-        sub_div.append(content)
-
-        names.append(file.stem)
-
-    if menu_div:
-
-        menu_div.clear()
-
-        for index, name in enumerate(names):
-
-            title = make_title(name)
-
-            div_tag = template_soup.new_tag("div")
-            div_tag["class"] = "nav-sub-item"
-
-            anchor_tag = template_soup.new_tag("a")
-            anchor_tag["data-target"] = name
-
-            anchor_tag.string = title
-
-            div_tag.append(anchor_tag)
-
-            if index < (len(names) - 1):
-
-                line_index = index % len(lines)
-
-                img_tag = template_soup.new_tag(
-                    "img",
-                    src=f"img/{lines[line_index]}",
-                    alt="hand-drawn divider",
-                )
-
-                img_tag["class"] = "hand-drawn-line-sub-menu"
-
-                div_tag.append(img_tag)
-
-            menu_div.append(div_tag)
-
-
 def add_class(
     element,
     class_name,
@@ -162,13 +101,9 @@ def process_spans(
         # check if span text contain {page}
         if span.string and "{page}" in span.string:
 
-            data = page_name.split("_")
+            title = make_title(page_name)
 
-            data = [word.capitalize() for word in data]
-
-            page_name = " ".join(data)
-
-            span.string = span.string.replace("{page}", page_name)
+            span.string = span.string.replace("{page}", title)
 
 
 def load_template(
@@ -260,20 +195,6 @@ def generate_element(
         process_element_file(
             content_div=content_div,
             element_file=element_file,
-        )
-
-    elif element_folder.exists():
-
-        menu_div = template_soup.find(
-            id=f"menu_{element_type}",
-        )
-
-        process_element_folder(
-            template_soup=template_soup,
-            content_div=content_div,
-            menu_div=menu_div,
-            element_folder=element_folder,
-            lines=lines,
         )
 
     else:
@@ -394,7 +315,7 @@ def generate_page(
         page_name=page_name,
     )
 
-    for element_type in ["large", "split", "top", "middle", "bottom", "bottom_anchor"]:
+    for element_type in ["large", "split", "top", "middle"]:
 
         generate_element(
             page_folder=page_folder,
