@@ -183,7 +183,11 @@ def set_title(
 
     # Set the title of the HTML document
     if soup.title:
-        soup.title.string = title
+
+        template_title = str(soup.title.string)
+        new_title = template_title.replace("{page}", title)
+        soup.title.string.replace_with(new_title)
+
     else:
         new_title = soup.new_tag("title")
         new_title.string = title
