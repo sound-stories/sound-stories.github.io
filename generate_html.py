@@ -70,6 +70,7 @@ def process_popups(
         close_a["href"] = "#"
         close_a["data-bs-dismiss"] = "modal"
         close_a["aria-label"] = "Close"
+        close_a["class"] = "modal-close"
         close_a.string = "X"
         header_div.append(close_a)
 

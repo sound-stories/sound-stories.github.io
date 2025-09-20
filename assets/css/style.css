@@ -241,8 +241,8 @@ nav {
 .title{
   font-family: 'silt-rough', 'Courier New', Courier, monospace;
   font-weight: 300; /* thinner weight */
-  letter-spacing: 0.1em;
-  font-size: 2.5rem;
+  letter-spacing: 0.09em;
+  font-size: 3.0rem;
   text-decoration: none;
   color: #ffffff;
 }
@@ -342,10 +342,11 @@ nav {
 
   /* Close “X” */
   .modal-close {
+    font-family: 'MERKPIX-Bold', 'Courier New', Courier, monospace !important;
     position: absolute;
     top: 10px;
     right: 12px;
-    font-size: 1.5rem;
+    font-size: 3.0rem;
     line-height: 1;
     color: #000;
     text-decoration: none;
@@ -373,6 +374,22 @@ nav {
 
   /* Keep your source content hidden but present in the DOM */
   .popup-source[hidden] { display: none !important; }
+
+.modal-dialog {
+  max-width: 60% !important;
+}
+
+.modal-content {
+  color: rgb(45, 45, 45);
+  font-family: 'Overpass', sans-serif;
+}
+
+.modal-body {
+  padding-bottom: 1.0rem !important;
+  padding-top: 0.5rem !important;
+  padding-left: 1.0rem !important;
+  padding-right: 1.0rem !important;
+}
 
   /* website credits styles */
 
