@@ -120,6 +120,33 @@ def copy_assets(
             shutil.copytree(source, destination, dirs_exist_ok=True)
 
 
+def copy_favicon(
+    favicon_dir,
+    output_dir,
+):
+
+    # Copy favicon files to output directory
+    favicon_files = [
+        "favicon-16x16.png",
+        "favicon-32x32.png",
+        "favicon.ico",
+        "favicon.svg",
+        "apple-touch-icon.png",
+        "site.webmanifest",
+        "android-chrome-192x192.png",
+        "android-chrome-512x512.png",
+    ]
+
+    for favicon in favicon_files:
+        source = Path(favicon_dir) / favicon
+        destination = Path(output_dir) / favicon
+
+        if source.exists():
+            shutil.copy(source, destination)
+        else:
+            print(f"Warning: Favicon file {favicon} not found in {favicon_dir}.")
+
+
 def copy_cname(
     output_dir,
 ):
@@ -444,9 +471,15 @@ if __name__ == "__main__":
     # Paths
     output_dir = "html"
     assets_dir = "assets"
+    favicon_dir = "favicon"
 
     # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
+
+    copy_favicon(
+        favicon_dir=favicon_dir,
+        output_dir=output_dir,
+    )
 
     copy_assets(
         assets_dir=assets_dir,
