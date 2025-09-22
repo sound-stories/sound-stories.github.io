@@ -5,6 +5,7 @@ import shutil
 from bs4 import BeautifulSoup  # Import BeautifulSoup
 from bs4.element import Tag  # Import Tag for type checking
 
+
 ORDER = [
     "commissions",
     "songs",
@@ -120,6 +121,25 @@ def copy_assets(
             shutil.copytree(source, destination, dirs_exist_ok=True)
 
 
+def copy_robots(
+    robots_dir,
+    output_dir,
+):
+
+    files = [
+        "robots.txt",
+        "sitemap.xml",
+    ]
+
+    for file in files:
+        source = Path(robots_dir) / file
+        destination = Path(output_dir) / file
+        if source.exists():
+            shutil.copy(source, destination)
+        else:
+            print(f"Warning: Robots file {file} not found in {robots_dir}.")
+
+
 def copy_favicon(
     favicon_dir,
     output_dir,
@@ -216,16 +236,32 @@ def set_title(
     page_name,
 ):
 
-    title = make_title(page_name)
-
     # Set the title of the HTML document
     if soup.title:
 
         template_title = str(soup.title.string)
-        new_title = template_title.replace("{page}", title)
+
+        if page_name.lower() == "home":
+
+            new_title = template_title.replace("{page}", "").strip()
+
+            if new_title.endswith("|"):
+                new_title = new_title[:-1].strip()
+
+            new_title = new_title.strip()
+
+        else:
+
+            title = make_title(page_name)
+
+            new_title = template_title.replace("{page}", title)
+
         soup.title.string.replace_with(new_title)
 
     else:
+
+        title = make_title(page_name)
+
         new_title = soup.new_tag("title")
         new_title.string = title
         soup.head.append(new_title)
@@ -472,9 +508,15 @@ if __name__ == "__main__":
     output_dir = "html"
     assets_dir = "assets"
     favicon_dir = "favicon"
+    robots_dir = "robots"
 
     # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
+
+    copy_robots(
+        robots_dir=robots_dir,
+        output_dir=output_dir,
+    )
 
     copy_favicon(
         favicon_dir=favicon_dir,
