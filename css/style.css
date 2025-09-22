@@ -353,6 +353,7 @@ nav {
     border: none;
     background: transparent;
     cursor: pointer;
+    z-index: 100000;
   }
   .modal-close:hover,
   .modal-close:focus {
@@ -389,6 +390,12 @@ nav {
   padding-top: 0.5rem !important;
   padding-left: 1.0rem !important;
   padding-right: 1.0rem !important;
+}
+
+.modal-header {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
 }
 
   /* website credits styles */
