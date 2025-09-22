@@ -5,6 +5,16 @@ import shutil
 from bs4 import BeautifulSoup  # Import BeautifulSoup
 from bs4.element import Tag  # Import Tag for type checking
 
+ORDER = [
+    "commissions",
+    "songs",
+    "podcasts",
+    "studio_facilities",
+    "experiments",
+    "contact",
+    "about",
+]
+
 
 def get_content(html_file):
 
@@ -61,10 +71,10 @@ def process_popups(
         header_div["class"] = "modal-header"
         content_div.append(header_div)
 
-        title_h5 = template_soup.new_tag("h5")
-        title_h5["class"] = "modal-title"
-        title_h5.string = make_title(name)
-        header_div.append(title_h5)
+        # title_h5 = template_soup.new_tag("h5")
+        # title_h5["class"] = "modal-title"
+        # title_h5.string = make_title(name)
+        # header_div.append(title_h5)
 
         close_a = template_soup.new_tag("a")
         close_a["href"] = "#"
@@ -72,7 +82,7 @@ def process_popups(
         close_a["aria-label"] = "Close"
         close_a["class"] = "modal-close"
         close_a.string = "X"
-        header_div.append(close_a)
+        content_div.append(close_a)
 
         body_div = template_soup.new_tag("div")
         body_div["class"] = "modal-body"
@@ -269,19 +279,9 @@ def process_navigation(
     lines,
 ):
 
-    order = [
-        "commissions",
-        "podcasts",
-        "songs",
-        "studio_facilities",
-        "experiments",
-        "contact",
-        "about",
-    ]
-
     page_names = sorted(
         page_names,
-        key=lambda x: order.index(x) if x in order else len(order),
+        key=lambda x: ORDER.index(x) if x in ORDER else len(ORDER),
     )
 
     # remove home
