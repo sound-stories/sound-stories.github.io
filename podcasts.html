@@ -25,31 +25,82 @@
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/> <!-- Optional: SVG favicon -->
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/> <!-- Apple Touch Icon (iOS home screen) -->
 <link href="/site.webmanifest" rel="manifest"/> <!-- Android/Chrome manifest -->
-<link href="https://soundstories.music/" rel="canonical">
+<link href="https://soundstories.music/" rel="canonical"/>
 <meta content="index,follow" name="robots"/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "SoundStories",
-    "url": "https://soundstories.music/",
-    "logo": "https://soundstories.music/img/social/black_logo_stacked_1200x630.png",
-    "sameAs": [
-      "https://www.youtube.com/@SoundStoriesMusic",
-      "https://www.instagram.com/soundstories.music"
-    ],
-    "foundingLocation": "London, UK",
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "contactType": "customer service",
-      "email": "hello@soundstories.music",
-      "areaServed": "GB"
-    }]
-  }
-  </script>
-</link></head>
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"ProfessionalService",
+      "@id":"https://soundstories.music/#org",
+      "name":"SoundStories",
+      "url":"https://soundstories.music/",
+      "logo":"https://soundstories.music/img/social/black_logo_stacked_1200x630.png",
+      "image":"https://soundstories.music/img/social/black_logo_stacked_1200x630.png",
+      "areaServed":[{"@type":"City","name":"London"},"United Kingdom"],
+      "foundingLocation":"London, UK",
+      "sameAs":[
+        "https://www.youtube.com/@SoundStoriesMusic",
+        "https://www.instagram.com/soundstories.music"
+      ],
+      "contactPoint":{
+        "@type":"ContactPoint",
+        "contactType":"customer service",
+        "email":"hello@soundstories.music",
+        "areaServed":"GB"
+      },
+      "hasOfferCatalog":{
+        "@type":"OfferCatalog",
+        "name":"Services",
+        "itemListElement":[
+          {
+            "@type":"Offer",
+            "itemOffered":{
+              "@type":"Service",
+              "name":"Music Commissions",
+              "url":"https://soundstories.music/commissions.html"
+            }
+          },
+          {
+            "@type":"Offer",
+            "itemOffered":{
+              "@type":"Service",
+              "name":"Podcast Production",
+              "url":"https://soundstories.music/podcasts.html"
+            }
+          },
+          {
+            "@type":"Offer",
+            "itemOffered":{
+              "@type":"Service",
+              "name":"Bespoke Songs",
+              "url":"https://soundstories.music/songs.html"
+            }
+          },
+          {
+            "@type":"Offer",
+            "itemOffered":{
+              "@type":"Service",
+              "name":"Recording Studio",
+              "url":"https://soundstories.music/studio_facilities.html"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type":"WebSite",
+      "@id":"https://soundstories.music/#website",
+      "url":"https://soundstories.music/",
+      "name":"SoundStories"
+    }
+  ]
+}
+</script>
+</head>
 <body class="body_podcasts">
 <h1 class="visually-hidden">Bespoke Music, Podcasts &amp; Studio Facilities in London | SoundStories</h1>
 <!-- Navigation Bar -->
